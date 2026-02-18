@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Developer Tools Workshop - Cinq ICT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+  <style>
+    :root {
+      --r-background-color: #191919;
+      --r-main-color: #fff;
+      --r-heading-color: #42affa;
+      --r-link-color: #42affa;
+    }
+    .reveal h1, .reveal h2, .reveal h3 {
+      text-transform: none;
+      font-weight: 700;
+    }
+    .reveal h1 {
+      font-size: 2.5em;
+      color: #42affa;
+    }
+    .reveal h2 {
+      font-size: 1.8em;
+      color: #42affa;
+    }
+    .reveal h3 {
+      font-size: 1.3em;
+      color: #8be9fd;
+    }
+    .reveal ul {
+      display: block;
+      margin-left: 1em;
+    }
+    .reveal li {
+      margin: 0.5em 0;
+      font-size: 0.85em;
+    }
+    .reveal pre {
+      width: 100%;
+      font-size: 0.55em;
+    }
+    .reveal code {
+      background: #2a2a2a;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+    .reveal pre code {
+      padding: 1em;
+    }
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      text-align: left;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #1a3a4a 0%, #2a2a2a 100%);
+      border-left: 4px solid #42affa;
+      padding: 1em;
+      margin: 0.5em 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+    .comparison-table th {
+      background: #42affa;
+      color: #191919;
+      padding: 0.8em;
+      text-align: left;
+    }
+    .comparison-table td {
+      padding: 0.8em;
+      border-bottom: 1px solid #444;
+    }
+    .comparison-table tr:nth-child(even) {
+      background: #2a2a2a;
+    }
+    .emoji-icon {
+      font-size: 1.5em;
+      margin-right: 0.3em;
+    }
+    .subtitle {
+      color: #94a3b8;
+      font-size: 0.6em;
+      font-weight: 400;
+    }
+    .accent {
+      color: #42affa;
+    }
+    .accent-purple {
+      color: #8be9fd;
+    }
+    .small-text {
+      font-size: 0.7em;
+      color: #94a3b8;
+    }
+    .logo-text {
+      font-size: 3em;
+      font-weight: 800;
+      background: linear-gradient(135deg, #42affa, #8be9fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .agenda-item {
+      display: flex;
+      align-items: center;
+      margin: 0.8em 0;
+      padding: 0.5em 1em;
+      background: #2a2a2a;
+      border-radius: 8px;
+    }
+    .agenda-time {
+      color: #42affa;
+      font-weight: bold;
+      min-width: 80px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+      font-size: 0.8em;
+    }
+    .feature-card {
+      background: #2a2a2a;
+      padding: 1em;
+      border-radius: 8px;
+      border: 1px solid #444;
+    }
+    .feature-card h4 {
+      color: #42affa;
+      margin: 0 0 0.5em 0;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title Slide -->
+      <section>
+        <div class="logo-text">AI Developer Tools</div>
+        <h2 style="color: #e2e8f0; margin-top: 0.5em;">Workshop</h2>
+        <p class="subtitle" style="font-size: 1em; margin-top: 1em;">Cinq ICT</p>
+        <p class="small-text" style="margin-top: 2em;">Cursor &bull; Claude Code &bull; Best Practices</p>
+      </section>
+
+      <!-- Provocative Quote 1 -->
+      <section>
+        <blockquote style="border: none; box-shadow: none; font-size: 1.4em; font-style: italic; color: #e2e8f0;">
+          "What is an IDE?"
+        </blockquote>
+        <p class="small-text" style="margin-top: 1.5em;">— and what should it be in 2026?</p>
+      </section>
+
+      <!-- Provocative Quote 2 -->
+      <section>
+        <blockquote style="border: none; box-shadow: none; font-size: 1.4em; font-style: italic; color: #e2e8f0;">
+          "Real developers read the docs."
+        </blockquote>
+        <p class="small-text" style="margin-top: 1.5em;">— or do they?</p>
+      </section>
+
+      <!-- Provocative Quote 3 -->
+      <section>
+        <blockquote style="border: none; box-shadow: none; font-size: 1.4em; font-style: italic; color: #e2e8f0;">
+          "The best code is the code you don't have to write."
+        </blockquote>
+        <p class="small-text" style="margin-top: 1.5em;">— what if the bottleneck isn't typing anymore?</p>
+      </section>
+
+      <!-- Agenda -->
+      <section>
+        <h2>Agenda</h2>
+        <div style="max-width: 600px; margin: 0 auto;">
+          <div class="agenda-item">
+            <span class="agenda-time">15 min</span>
+            <span>IDE Comparison: Cursor vs Claude Code</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">45 min</span>
+            <span>Guided Assignment</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">15 min</span>
+            <span>Best Practices & Tips</span>
+          </div>
+          <div class="agenda-item">
+            <span class="agenda-time">45 min</span>
+            <span>Open Assignment</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Divider: IDE Comparison -->
+      <section data-background="linear-gradient(135deg, #1a3a4a 0%, #191919 100%)">
+        <h1>Part 1</h1>
+        <h2 style="color: #e2e8f0;">IDE Comparison</h2>
+        <p class="accent">Cursor vs Claude Code</p>
+      </section>
+
+      <!-- Cursor Overview -->
+      <section>
+        <h2>Cursor</h2>
+        <p class="accent-purple">VS Code fork with AI deeply integrated</p>
+        <div class="feature-grid" style="margin-top: 1em;">
+          <div class="feature-card">
+            <h4>Tab Completion</h4>
+            <p>Autocomplete on steroids, predicts multi-line changes</p>
+          </div>
+          <div class="feature-card">
+            <h4>Cmd+K</h4>
+            <p>Inline editing with natural language</p>
+          </div>
+          <div class="feature-card">
+            <h4>Composer</h4>
+            <p>Multi-file changes in one go</p>
+          </div>
+          <div class="feature-card">
+            <h4>Chat Panel</h4>
+            <p>Codebase-aware with @-mentions</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cursor Recent Changes -->
+      <section>
+        <h2>Cursor - What's New</h2>
+        <p class="small-text">Late 2025 - Early 2026</p>
+        <ul>
+          <li><span class="accent">Subagents</span> - parallel specialized agents for discrete subtasks</li>
+          <li><span class="accent">Agent Skills</span> - SKILL.md files for dynamic context & workflows</li>
+          <li><span class="accent">Image generation</span> - create UI mockups & assets from the agent</li>
+          <li><span class="accent">Plan & Ask modes</span> - now in CLI, with cloud handoff</li>
+          <li><span class="accent">Cursor Blame</span> (Enterprise) - AI attribution for git</li>
+          <li>Clarification questions from agents mid-conversation</li>
+        </ul>
+      </section>
+
+      <!-- Claude Code Overview -->
+      <section>
+        <h2>Claude Code</h2>
+        <p class="accent-purple">Terminal-based agentic coding assistant</p>
+        <div class="feature-grid" style="margin-top: 1em;">
+          <div class="feature-card">
+            <h4>Editor Agnostic</h4>
+            <p>Works alongside any editor you prefer</p>
+          </div>
+          <div class="feature-card">
+            <h4>Autonomous</h4>
+            <p>File editing + command execution</p>
+          </div>
+          <div class="feature-card">
+            <h4>Deep Exploration</h4>
+            <p>Understands entire codebase context</p>
+          </div>
+          <div class="feature-card">
+            <h4>Git Integration</h4>
+            <p>Commits, PRs, branches built-in</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Claude Code Recent Changes -->
+      <section>
+        <h2>Claude Code - What's New</h2>
+        <p class="small-text">GA May 2025 • Terminal, VS Code, Web, Desktop, JetBrains</p>
+        <ul>
+          <li><span class="accent">Agent teams</span> - multi-agent collaboration (experimental)</li>
+          <li><span class="accent">Skills & slash commands</span> - SKILL.md, custom workflows</li>
+          <li><span class="accent">Hooks system</span> - automation, guardrails, pre/post actions</li>
+          <li><span class="accent">MCP</span> - Model Context Protocol for external tools</li>
+          <li><span class="accent">Memory & recall</span> - Claude records and recalls as it works</li>
+          <li>Session forking, <code>--from-pr</code>, background tasks, Opus 4.6</li>
+        </ul>
+      </section>
+
+      <!-- Comparison Table -->
+      <section>
+        <h2>When to Use Which?</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Cursor</th>
+              <th>Claude Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Quick edits, autocomplete</td>
+              <td>Large refactors, greenfield projects</td>
+            </tr>
+            <tr>
+              <td>Visual diff review preferred</td>
+              <td>Comfortable with terminal</td>
+            </tr>
+            <tr>
+              <td>Tight editor integration</td>
+              <td>Complex multi-step tasks</td>
+            </tr>
+            <tr>
+              <td>Smaller, focused changes</td>
+              <td>Full-stack scaffolding</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small-text" style="margin-top: 1em;">Both support <code>SKILL.md</code> for custom workflows. They work great together—Claude Code for big changes, Cursor for refinement.</p>
+      </section>
+
+      <!-- Section Divider: Assignment -->
+      <section data-background="linear-gradient(135deg, #1a3a4a 0%, #191919 100%)">
+        <h1>Part 2</h1>
+        <h2 style="color: #e2e8f0;">Guided Assignment</h2>
+        <p class="accent">45 minutes hands-on</p>
+      </section>
+
+      <!-- Assignment Options Overview -->
+      <section>
+        <h2>Assignment Options</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>A: Next.js Dashboard</h4>
+            <p>Greenfield • Metrics cards, charts, data table</p>
+          </div>
+          <div class="feature-card">
+            <h4>B: Debug & Bug Fix</h4>
+            <p>Legacy • Trace, fix, add tests</p>
+          </div>
+          <div class="feature-card">
+            <h4>C: Document Existing Code</h4>
+            <p>Maintenance • JSDoc, README, architecture</p>
+          </div>
+          <div class="feature-card">
+            <h4>D: Tauri Notes App</h4>
+            <p>Greenfield • Markdown editor, filesystem</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Assignment A -->
+      <section>
+        <h2>Option A: Next.js Dashboard</h2>
+        <div class="highlight-box">
+          <code>npx create-next-app@latest</code>
+        </div>
+        <ul style="font-size: 0.8em;">
+          <li>Create <code>/dashboard</code> route (App Router)</li>
+          <li>Build 4 metric cards (users, revenue, sessions, conversion)</li>
+          <li>Add a chart using <code>recharts</code></li>
+          <li>Data table with sorting</li>
+          <li>Style with Tailwind CSS</li>
+          <li>Use Server Components where appropriate</li>
+        </ul>
+      </section>
+
+      <!-- Assignment B -->
+      <section>
+        <h2>Option B: Debug & Bug Fix</h2>
+        <div class="highlight-box">
+          <p style="font-size: 0.8em; margin: 0;">Use a provided legacy codebase or your own project</p>
+        </div>
+        <ul style="font-size: 0.8em;">
+          <li>Clone a repo with intentional bugs (or pick a known issue in your codebase)</li>
+          <li>Use AI to trace the bug: paste error, describe symptom, @-mention relevant files</li>
+          <li>Implement the fix with AI assistance</li>
+          <li>Add or update tests to prevent regression</li>
+          <li>Verify the fix and document what was wrong</li>
+        </ul>
+      </section>
+
+      <!-- Assignment C -->
+      <section>
+        <h2>Option C: Document Existing Code</h2>
+        <div class="highlight-box">
+          <p style="font-size: 0.8em; margin: 0;">Pick an undocumented module, util, or API from any project</p>
+        </div>
+        <ul style="font-size: 0.8em;">
+          <li>Let AI explore the code with @codebase or @folder</li>
+          <li>Add JSDoc/TSDoc to functions and types</li>
+          <li>Write a README for the module (purpose, usage, examples)</li>
+          <li>Optionally: architecture diagram or decision log</li>
+          <li>Use Plan mode for complex multi-file documentation</li>
+        </ul>
+      </section>
+
+      <!-- Assignment D -->
+      <section>
+        <h2>Option D: Tauri Notes App</h2>
+        <div class="highlight-box">
+          <code>npm create tauri-app@latest</code>
+        </div>
+        <ul style="font-size: 0.8em;">
+          <li>Sidebar with note list</li>
+          <li>Markdown editor pane</li>
+          <li>Live preview (or toggle)</li>
+          <li>Save/load via Tauri filesystem API</li>
+          <li>Create, delete, search notes</li>
+        </ul>
+      </section>
+
+      <!-- Section Divider: Best Practices -->
+      <section data-background="linear-gradient(135deg, #1a3a4a 0%, #191919 100%)">
+        <h1>Part 3</h1>
+        <h2 style="color: #e2e8f0;">Best Practices</h2>
+        <p class="accent">Tips for effective AI-assisted coding</p>
+      </section>
+
+      <!-- Context Management -->
+      <section>
+        <h2>Context Management</h2>
+        <div class="highlight-box" style="margin-bottom: 1em;">
+          <p style="color: #f87171; margin: 0; font-size: 0.8em;"><strong>Bad:</strong> "Fix the login bug"</p>
+        </div>
+        <div class="highlight-box" style="border-left-color: #4ade80;">
+          <p style="color: #4ade80; margin: 0; font-size: 0.8em;"><strong>Good:</strong> "In src/auth/validate.ts, the JWT validation fails when tokens contain special characters. Error on line 45."</p>
+        </div>
+        <ul style="margin-top: 1em; font-size: 0.8em;">
+          <li><span class="accent">Reference files explicitly</span> - use @-mentions or paths</li>
+          <li><span class="accent">Chunk large tasks</span> - smaller, verifiable steps</li>
+          <li><span class="accent">Fresh context</span> - new session for unrelated tasks</li>
+        </ul>
+      </section>
+
+      <!-- Prompting Techniques -->
+      <section>
+        <h2>Prompting Techniques</h2>
+        <div style="text-align: left; font-size: 0.85em;">
+          <p><span class="accent">1. Goal first, then constraints</span></p>
+          <pre><code>"Build a user registration form.
+Constraints: react-hook-form, zod validation,
+no external UI libraries."</code></pre>
+          <p><span class="accent">2. Provide examples</span></p>
+          <pre><code>"Format output like: { id: string, name: string }"</code></pre>
+          <p><span class="accent">3. Ask for explanation first</span></p>
+          <p><span class="accent">4. Iterate, don't restart</span></p>
+        </div>
+      </section>
+
+      <!-- Project Configuration -->
+      <section>
+        <h2>Project Configuration</h2>
+        <div class="two-columns">
+          <div>
+            <h3 style="font-size: 1em;">.cursorrules</h3>
+            <pre><code style="font-size: 0.65em;">You are working on Next.js 14:
+- App Router (not Pages)
+- TypeScript strict mode
+- Tailwind CSS
+
+Rules:
+- No 'use client' unless needed
+- Use named exports
+- Prefer Server Actions</code></pre>
+          </div>
+          <div>
+            <h3 style="font-size: 1em;">CLAUDE.md</h3>
+            <pre><code style="font-size: 0.65em;"># Project: Dashboard
+
+## Stack
+- Next.js 14, TypeScript
+- Prisma + PostgreSQL
+
+## Don't
+- Don't use `any` type
+- Don't install deps without asking</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCP Brief -->
+      <section>
+        <h2>MCP - Model Context Protocol</h2>
+        <p class="small-text">Connect AI to external tools and data</p>
+        <div class="feature-grid" style="margin-top: 1em;">
+          <div class="feature-card">
+            <h4>Database Access</h4>
+            <p>Query Postgres directly</p>
+          </div>
+          <div class="feature-card">
+            <h4>Documentation</h4>
+            <p>Fetch from Notion, Confluence</p>
+          </div>
+          <div class="feature-card">
+            <h4>Design Tools</h4>
+            <p>Pull from Figma</p>
+          </div>
+          <div class="feature-card">
+            <h4>Custom Tools</h4>
+            <p>Internal APIs, services</p>
+          </div>
+        </div>
+        <p class="small-text" style="margin-top: 1em;">Keep it simple: most projects don't need MCP. Start without it.</p>
+      </section>
+
+      <!-- Section Divider: Open Assignment -->
+      <section data-background="linear-gradient(135deg, #1a3a4a 0%, #191919 100%)">
+        <h1>Part 4</h1>
+        <h2 style="color: #e2e8f0;">Open Assignment</h2>
+        <p class="accent">45 minutes - your own project</p>
+      </section>
+
+      <!-- Open Assignment Tips -->
+      <section>
+        <h2>Open Assignment</h2>
+        <p class="accent-purple">Work on your own project or idea</p>
+        <div style="text-align: left; margin-top: 1em;">
+          <p><strong>Ideas if stuck:</strong></p>
+          <ul style="font-size: 0.8em;">
+            <li>Port a side project feature to new framework</li>
+            <li>Build a tool that solves a daily annoyance</li>
+            <li>Recreate a simple app (Trello board, Pomodoro timer)</li>
+            <li>Prototype an idea you've been thinking about</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tips for Open Assignment -->
+      <section>
+        <h2>Tips for Success</h2>
+        <div style="text-align: left;">
+          <div class="highlight-box">
+            <p style="margin: 0;"><span class="accent">1.</span> Start with a clear, written goal</p>
+          </div>
+          <div class="highlight-box">
+            <p style="margin: 0;"><span class="accent">2.</span> Use plan mode / Composer for scaffolding</p>
+          </div>
+          <div class="highlight-box">
+            <p style="margin: 0;"><span class="accent">3.</span> Iterate in smaller chunks</p>
+          </div>
+          <div class="highlight-box">
+            <p style="margin: 0;"><span class="accent">4.</span> Don't be afraid to restart context if stuck</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section>
+        <h2>Resources</h2>
+        <ul style="font-size: 0.85em;">
+          <li><a href="https://docs.cursor.com">docs.cursor.com</a></li>
+          <li><a href="https://docs.anthropic.com/docs">docs.anthropic.com/docs</a> (Claude Code)</li>
+          <li><a href="https://tauri.app">tauri.app</a></li>
+          <li><a href="https://nextjs.org/docs">nextjs.org/docs</a></li>
+          <li><a href="https://docs.expo.dev">docs.expo.dev</a></li>
+        </ul>
+      </section>
+
+      <!-- Thank You -->
+      <section data-background="linear-gradient(135deg, #1a3a4a 0%, #191919 100%)">
+        <div class="logo-text">Thank You!</div>
+        <p style="margin-top: 1em; color: #94a3b8;">Questions?</p>
+        <p class="small-text" style="margin-top: 2em;">Cinq ICT - AI Developer Tools Workshop</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+</html>
