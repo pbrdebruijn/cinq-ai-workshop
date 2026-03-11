@@ -521,82 +521,84 @@
         <h2>Assignment Options</h2>
         <div class="feature-grid">
           <div class="feature-card">
-            <h4>A: Next.js Dashboard</h4>
-            <p>Greenfield &bull; Metrics cards, charts, data table</p>
+            <h4>A: Extend the Dashboard</h4>
+            <p>Existing app &bull; Add live API widgets to a partial dashboard</p>
           </div>
           <div class="feature-card">
-            <h4>B: Debug &amp; Bug Fix</h4>
-            <p>Legacy &bull; Trace, fix, add tests</p>
+            <h4>B: Debug the Todo App</h4>
+            <p>Existing app &bull; Find &amp; fix 3 intentional bugs</p>
           </div>
           <div class="feature-card">
-            <h4>C: Document Existing Code</h4>
-            <p>Maintenance &bull; JSDoc, README, architecture</p>
+            <h4>C: API Search App</h4>
+            <p>Greenfield &bull; Server Actions, public API, results UI</p>
           </div>
           <div class="feature-card">
-            <h4>D: Tauri Notes App</h4>
-            <p>Greenfield &bull; Markdown editor, filesystem</p>
+            <h4>D: AI Chatbot</h4>
+            <p>Greenfield &bull; Claude API, streaming, chat UI</p>
           </div>
         </div>
       </section>
 
       <!-- ══ Assignment A ══ -->
       <section data-background-color="#09090b">
-        <h2>Option A &mdash; Next.js Dashboard</h2>
+        <h2>Option A &mdash; Extend the Dashboard</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>npx create-next-app@latest</code>
+          <code>cd workshop-dashboard-app &amp;&amp; npm run dev</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Create <code>/dashboard</code> route (App Router)</li>
-          <li>Build 4 metric cards (users, revenue, sessions, conversion)</li>
-          <li>Add a chart using <code>recharts</code></li>
-          <li>Data table with sorting</li>
-          <li>Style with Tailwind CSS</li>
-          <li>Use Server Components where appropriate</li>
+          <li>3 live widgets already built &mdash; use them as patterns</li>
+          <li>Implement <strong>Weather</strong> card &mdash; Open-Meteo API (no key needed)</li>
+          <li>Implement <strong>Crypto Markets</strong> card &mdash; CoinGecko API (BTC, ETH, SOL)</li>
+          <li>Implement <strong>News Headlines</strong> card &mdash; Hacker News Algolia API</li>
+          <li>Optional: <strong>Requests Table</strong> or chart with <code>recharts</code></li>
+          <li>All server components, all public APIs, no auth required</li>
         </ul>
       </section>
 
       <!-- ══ Assignment B ══ -->
       <section data-background-color="#09090b">
-        <h2>Option B &mdash; Debug &amp; Bug Fix</h2>
+        <h2>Option B &mdash; Debug the Todo App</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <p style="font-size: 0.8em; margin: 0; color: var(--zinc-400);">Use a provided legacy codebase or your own project</p>
+          <code>cd workshop-todo-app &amp;&amp; npm run dev</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Clone a repo with intentional bugs (or pick a known issue)</li>
-          <li>Use AI to trace the bug: paste error, describe symptom, @-mention relevant files</li>
-          <li>Implement the fix with AI assistance</li>
-          <li>Add or update tests to prevent regression</li>
-          <li>Verify the fix and document what was wrong</li>
+          <li>The app has <span class="accent">3 intentional bugs</span> hidden in <code>src/app/page.tsx</code></li>
+          <li>Use AI to explore the code, describe symptoms, and locate root causes</li>
+          <li>Fix each bug with AI assistance &mdash; verify behaviour after each fix</li>
+          <li>Bonus: add <code>localStorage</code> persistence so todos survive refresh</li>
+          <li>Bonus: add a &ldquo;Edit&rdquo; feature to rename a todo in-place</li>
         </ul>
       </section>
 
       <!-- ══ Assignment C ══ -->
       <section data-background-color="#09090b">
-        <h2>Option C &mdash; Document Existing Code</h2>
+        <h2>Option C &mdash; API Search App</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <p style="font-size: 0.8em; margin: 0; color: var(--zinc-400);">Pick an undocumented module, util, or API from any project</p>
+          <code>npx create-next-app@latest</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Let AI explore the code with @codebase or @folder</li>
-          <li>Add JSDoc/TSDoc to functions and types</li>
-          <li>Write a README for the module (purpose, usage, examples)</li>
-          <li>Optionally: architecture diagram or decision log</li>
-          <li>Use Plan mode for complex multi-file documentation</li>
+          <li>Search input that calls a public API via a <strong>Server Action</strong></li>
+          <li>Pick any API: OMDB (movies), OpenWeatherMap, CoinGecko, or Hacker News</li>
+          <li>Display results in cards or a list</li>
+          <li>Handle loading states and errors gracefully</li>
+          <li>Store recent searches in <code>localStorage</code></li>
+          <li>Fully responsive, styled with Tailwind CSS</li>
         </ul>
       </section>
 
       <!-- ══ Assignment D ══ -->
       <section data-background-color="#09090b">
-        <h2>Option D &mdash; Tauri Notes App</h2>
+        <h2>Option D &mdash; AI Chatbot</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>npm create tauri-app@latest</code>
+          <code>npx create-next-app@latest</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Sidebar with note list</li>
-          <li>Markdown editor pane</li>
-          <li>Live preview (or toggle)</li>
-          <li>Save/load via Tauri filesystem API</li>
-          <li>Create, delete, search notes</li>
+          <li>Chat UI with message bubbles (user &amp; assistant)</li>
+          <li>Next.js Route Handler calling the <strong>Anthropic Claude API</strong></li>
+          <li>Stream the response so text appears token-by-token</li>
+          <li>Keep full conversation history in state</li>
+          <li>Bonus: system prompt input to customise the assistant persona</li>
+          <li>Bonus: copy-to-clipboard or clear-conversation button</li>
         </ul>
       </section>
 
@@ -745,9 +747,9 @@ Rules:
         <ul style="font-size: 0.85em; margin-top: 0.5em;">
           <li><a href="https://docs.cursor.com">docs.cursor.com</a></li>
           <li><a href="https://docs.anthropic.com/docs">docs.anthropic.com/docs</a> &mdash; Claude Code</li>
-          <li><a href="https://tauri.app">tauri.app</a></li>
+          <li><a href="https://docs.anthropic.com/en/api/getting-started">docs.anthropic.com/en/api</a> &mdash; Claude API</li>
           <li><a href="https://nextjs.org/docs">nextjs.org/docs</a></li>
-          <li><a href="https://docs.expo.dev">docs.expo.dev</a></li>
+          <li><a href="https://open-meteo.com/en/docs">open-meteo.com/en/docs</a> &mdash; free weather API</li>
         </ul>
       </section>
 

@@ -71,99 +71,131 @@ Choose one of the following assignments for participants.
 
 ---
 
-### Option A: Next.js Dashboard Component
+### Option A: Extend the Dashboard
 
-**Goal**: Build a real-time metrics dashboard page using AI assistance.
+**Goal**: Implement the empty widget slots in an existing partially-built analytics dashboard.
+
+**Starting point**: Provided repo — `workshop-dashboard-app`
+
+```bash
+cd workshop-dashboard-app
+npm run dev
+# Open http://localhost:3000
+```
+
+**Context**: The app already has 3 live widgets (GitHub Stars, Cat Fact, Bitcoin Price). Participants implement the empty placeholder cards using public APIs — no auth required.
+
+**Requirements**:
+1. Implement **Weather Overview** card — [Open-Meteo API](https://open-meteo.com/en/docs)
+   - `GET https://api.open-meteo.com/v1/forecast?latitude=52.37&longitude=4.89&current_weather=true`
+   - Show current temperature and wind speed for Amsterdam
+2. Implement **Crypto Markets** card — [CoinGecko API](https://www.coingecko.com/en/api)
+   - `GET https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true`
+   - Show BTC, ETH, SOL with price and colour-coded 24h change
+3. Implement **News Headlines** card — [Hacker News Algolia API](https://hn.algolia.com/api)
+   - `GET https://hn.algolia.com/api/v1/search?tags=front_page`
+   - Show top 5 story titles as links
+4. *(Optional)* **Requests Table** — GitHub issues for `vercel/next.js`
+5. *(Optional)* **API Call Timeline** — sparkline chart with `recharts`
+
+**Evaluation criteria**:
+- Did the AI understand the existing server component patterns and replicate them?
+- Correct use of `try/catch` so the build survives network errors
+- Tailwind styling consistent with existing cards
+
+**Example prompts**:
+- `"In src/app/page.tsx, implement the Weather Overview card using the Open-Meteo API to show current temperature and wind speed for Amsterdam."`
+- `"Using CoinGecko's simple price API, add a CryptoMarketsWidget to show BTC, ETH, and SOL prices and 24h change in the Crypto Markets card."`
+
+---
+
+### Option B: Debug the Todo App
+
+**Goal**: Find and fix 3 intentional bugs in a provided Next.js todo application.
+
+**Starting point**: Provided repo — `workshop-todo-app`
+
+```bash
+cd workshop-todo-app
+npm run dev
+# Open http://localhost:3000
+```
+
+**Context**: The app is a working-looking todo list, but has 3 logic bugs hidden in `src/app/page.tsx`. Participants use AI tools to discover and fix them.
+
+**The 3 bugs** (for facilitators — don't reveal upfront):
+1. **Active filter** — shows `completed` todos instead of active ones (wrong boolean condition)
+2. **Delete** — uses array index instead of todo `id`, so it deletes the wrong item after any reordering
+3. **Clear completed** — keeps completed todos and removes active ones instead of the reverse
+
+**Requirements**:
+1. Reproduce each bug by using the app
+2. Use AI to trace the root cause in the code (describe the symptom, @-mention the file)
+3. Apply the fix with AI assistance, verify the behaviour
+4. Document what was wrong (a short comment or commit message)
+5. *(Bonus)* Add `localStorage` persistence so todos survive a page refresh
+6. *(Bonus)* Add an inline "Edit" feature to rename a todo
+
+**Evaluation criteria**:
+- How accurately did the AI diagnose the bugs from a symptom description?
+- Quality of the AI's explanation vs just the fix
+- How much manual guidance was needed to reach the correct fix?
+
+---
+
+### Option C: API Search App
+
+**Goal**: Build a search interface around a public API using Next.js Server Actions.
+
+**Starting point**: Fresh Next.js app (`npx create-next-app@latest`)
+
+**API choices** (pick one):
+- Movies: [OMDB API](https://www.omdbapi.com/) (free API key)
+- Weather: [Open-Meteo](https://open-meteo.com/) (no key)
+- Crypto: [CoinGecko](https://www.coingecko.com/en/api) (no key)
+- News: [Hacker News Search API](https://hn.algolia.com/api) (no key)
+
+**Requirements**:
+1. Search input (controlled, with submit)
+2. A **Server Action** that calls the chosen API
+3. Display results in styled cards or a list
+4. Loading indicator while the action is running
+5. Error state when the API call fails
+6. Recent searches stored in `localStorage`
+7. Responsive design with Tailwind CSS
+
+**Evaluation criteria**:
+- Correct use of Server Actions (`'use server'`) vs client components
+- Proper loading and error UX
+- AI's ability to adapt to the chosen API's response shape
+
+---
+
+### Option D: AI Chatbot with Claude API
+
+**Goal**: Build a minimal streaming chat interface backed by the Anthropic Claude API.
 
 **Starting point**: Fresh Next.js app (`npx create-next-app@latest`)
 
 **Requirements**:
-1. Create a `/dashboard` route using App Router
-2. Build 4 metric cards showing:
-   - Total users
-   - Monthly revenue
-   - Active sessions
-   - Conversion rate
-3. Add a simple line or bar chart (use `recharts`)
-4. Include a data table with mock user data and sorting
-5. Style everything with Tailwind CSS
-6. Use server components where appropriate
+1. Chat UI with message bubbles (user on the right, assistant on the left)
+2. A Next.js Route Handler (`app/api/chat/route.ts`) that calls the Claude API
+3. Stream the response — text appears token-by-token (use `ReadableStream` or `ai` SDK)
+4. Keep full conversation history in state and send it with each request
+5. *(Bonus)* System prompt input so users can customise the assistant persona
+6. *(Bonus)* Copy-to-clipboard button on assistant messages
+7. *(Bonus)* Clear conversation button
+
+**Setup**:
+```bash
+npm install @anthropic-ai/sdk
+# Add ANTHROPIC_API_KEY to .env.local
+```
 
 **Evaluation criteria**:
-- Did the AI understand the component structure?
-- How much manual correction was needed?
-- Quality of generated Tailwind classes
-
----
-
-### Option B: React Native Todo App
-
-**Goal**: Build a functional todo application with Expo.
-
-**Starting point**: Fresh Expo app (`npx create-expo-app@latest`)
-
-**Requirements**:
-1. Main screen with todo list
-2. Add new todo with text input
-3. Mark todos complete (tap or swipe)
-4. Delete todos (swipe or long-press)
-5. Filter by: All / Active / Completed
-6. Persist data with AsyncStorage
-7. Simple but clean styling
-
-**Evaluation criteria**:
-- Correct React Native components (not web elements)
-- Proper gesture handling
-- State management approach
-
----
-
-### Option C: Tauri Notes App
-
-**Goal**: Build a desktop markdown note-taking application.
-
-**Starting point**: Fresh Tauri + React app (`npm create tauri-app@latest`)
-
-**Requirements**:
-1. Sidebar listing all notes
-2. Editor pane with textarea or markdown editor
-3. Live preview of markdown (or toggle view)
-4. Save notes to filesystem using Tauri APIs
-5. Load notes on startup
-6. Basic search/filter functionality
-7. Create and delete notes
-
-**Evaluation criteria**:
-- Correct use of Tauri's invoke system
-- Rust backend integration
-- File system permissions handling
-
----
-
-### Option D: Next.js API Integration App
-
-**Goal**: Build a search app that integrates with a public API.
-
-**Starting point**: Fresh Next.js app
-
-**API choices** (pick one):
-- Weather: OpenWeatherMap (free tier)
-- Crypto: CoinGecko (no key needed)
-- News: NewsAPI
-- Movies: OMDB API
-
-**Requirements**:
-1. Search input with submit
-2. Server Action or API Route to fetch data
-3. Display results in cards/list
-4. Loading states and error handling
-5. Recent searches (stored in cookies or localStorage)
-6. Responsive design
-
-**Evaluation criteria**:
-- Proper use of Server Actions vs API Routes
-- Error boundary implementation
-- Loading state UX
+- Streaming implementation (real-time token rendering vs waiting for full response)
+- Correct message history structure (`{ role: 'user' | 'assistant', content: string }[]`)
+- AI's ability to wire up the Anthropic SDK correctly from a single prompt
 
 ---
 
@@ -316,6 +348,8 @@ Participants work on their own project or idea.
 
 - [Cursor Documentation](https://docs.cursor.com)
 - [Claude Code Documentation](https://docs.anthropic.com/claude-code)
-- [Tauri Documentation](https://tauri.app)
+- [Claude API Documentation](https://docs.anthropic.com/en/api/getting-started)
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Expo Documentation](https://docs.expo.dev)
+- [Open-Meteo API](https://open-meteo.com/en/docs) — free, no auth required
+- [CoinGecko API](https://www.coingecko.com/en/api) — free, no auth required
+- [Hacker News Search API](https://hn.algolia.com/api) — free, no auth required
