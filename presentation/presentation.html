@@ -218,9 +218,9 @@
     .agenda-item {
       display: flex;
       align-items: center;
-      gap: 1.2em;
-      margin: 0.6em 0;
-      padding: 0.65em 1.1em;
+      gap: 1em;
+      margin: 0.35em 0;
+      padding: 0.5em 1em;
       background: var(--zinc-900);
       border: 1px solid var(--zinc-800);
       border-radius: 6px;
@@ -229,14 +229,15 @@
     .agenda-time {
       font-family: 'DM Mono', monospace;
       color: var(--amber);
-      font-size: 0.8em;
-      min-width: 70px;
+      font-size: 0.75em;
+      min-width: 72px;
+      white-space: nowrap;
       font-weight: 500;
     }
 
     .agenda-label {
       color: var(--zinc-300);
-      font-size: 0.88em;
+      font-size: 0.82em;
     }
 
     /* ── Comparison table ── */
@@ -428,14 +429,16 @@
       <!-- ══ Cursor Recent Changes ══ -->
       <section data-background-color="#09090b">
         <h2>Cursor &mdash; What&rsquo;s New</h2>
-        <p class="small-text" style="margin-bottom: 0.8em;">Late 2025 &ndash; Early 2026</p>
+        <p class="small-text" style="margin-bottom: 0.8em;">v1.0 June 2025 &rarr; v2.6 March 2026</p>
         <ul>
-          <li><span class="accent">Subagents</span> &mdash; parallel specialized agents for discrete subtasks</li>
-          <li><span class="accent">Agent Skills</span> &mdash; SKILL.md files for dynamic context &amp; workflows</li>
-          <li><span class="accent">Image generation</span> &mdash; create UI mockups &amp; assets from the agent</li>
-          <li><span class="accent">Plan &amp; Ask modes</span> &mdash; now in CLI, with cloud handoff</li>
-          <li><span class="accent">Cursor Blame</span> (Enterprise) &mdash; AI attribution for git</li>
-          <li>Clarification questions from agents mid-conversation</li>
+          <li><span class="accent">Multi-agents</span> &mdash; up to 8 agents in parallel, each in an isolated git worktree</li>
+          <li><span class="accent">Subagents &amp; Skills</span> &mdash; scoped agents for discrete subtasks + <code>SKILL.md</code> knowledge packages</li>
+          <li><span class="accent">Plugin Marketplace</span> &mdash; bundles skills, subagents, MCP servers &amp; hooks (Figma, Linear, AWS&hellip;)</li>
+          <li><span class="accent">Automations</span> &mdash; always-on cloud agents triggered by Slack, GitHub, Linear events</li>
+          <li><span class="accent">Bugbot</span> &mdash; auto-reviews PRs on GitHub with a &ldquo;Fix in Cursor&rdquo; shortcut</li>
+          <li><span class="accent">Debug Mode</span> &mdash; instruments apps with runtime logs to reproduce tricky bugs</li>
+          <li><span class="accent">Cursor Blame</span> (Enterprise) &mdash; AI attribution in git blame for Tab vs agent vs human</li>
+          <li>In-editor browser, image generation, JetBrains support (March 2026)</li>
         </ul>
       </section>
 
@@ -466,14 +469,16 @@
       <!-- ══ Claude Code Recent Changes ══ -->
       <section data-background-color="#09090b">
         <h2>Claude Code &mdash; What&rsquo;s New</h2>
-        <p class="small-text" style="margin-bottom: 0.8em;">GA May 2025 &bull; Terminal, VS Code, Web, Desktop, JetBrains</p>
+        <p class="small-text" style="margin-bottom: 0.8em;">GA May 2025 &bull; Terminal, VS Code, JetBrains, GitHub Actions</p>
         <ul>
-          <li><span class="accent">Agent teams</span> &mdash; multi-agent collaboration (experimental)</li>
-          <li><span class="accent">Skills &amp; slash commands</span> &mdash; SKILL.md, custom workflows</li>
-          <li><span class="accent">Hooks system</span> &mdash; automation, guardrails, pre/post actions</li>
-          <li><span class="accent">MCP</span> &mdash; Model Context Protocol for external tools</li>
-          <li><span class="accent">Memory &amp; recall</span> &mdash; Claude records and recalls as it works</li>
-          <li>Session forking, <code>--from-pr</code>, background tasks, Opus 4.6</li>
+          <li><span class="accent">Subagents</span> &mdash; up to 7 parallel agents, each with own context &amp; permissions</li>
+          <li><span class="accent">Hooks system</span> &mdash; shell or HTTP hooks on Pre/PostToolUse, Stop, WorktreeCreate</li>
+          <li><span class="accent">Skills</span> &mdash; reusable <code>SKILL.md</code> packages; agents discover &amp; apply them automatically</li>
+          <li><span class="accent">Checkpoints</span> &mdash; auto-snapshots before every change; rewind with <code>/rewind</code></li>
+          <li><span class="accent">MCP</span> &mdash; 300+ integrations, one-click install, dynamic tool loading</li>
+          <li><span class="accent">GitHub integration</span> &mdash; tag Claude Code on PRs to fix CI errors &amp; review comments</li>
+          <li><span class="accent">Agent SDK</span> &mdash; build custom agents on top of Claude Code&rsquo;s full toolchain</li>
+          <li>Sandboxing, cron scheduling, <code>/loop</code>, Sonnet 4.5 default (2026)</li>
         </ul>
       </section>
 
@@ -543,7 +548,7 @@
       <section data-background-color="#09090b">
         <h2>Option A &mdash; Extend the Dashboard</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>cd workshop-dashboard-app &amp;&amp; npm run dev</code>
+          <code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code>
         </div>
         <ul style="font-size: 0.8em;">
           <li>3 live widgets already built &mdash; use them as patterns</li>
@@ -559,7 +564,7 @@
       <section data-background-color="#09090b">
         <h2>Option B &mdash; Debug the Todo App</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>cd workshop-todo-app &amp;&amp; npm run dev</code>
+          <code>cd assignment-b-todo-app &amp;&amp; npm run dev</code>
         </div>
         <ul style="font-size: 0.8em;">
           <li>The app has <span class="accent">3 intentional bugs</span> hidden in <code>src/app/page.tsx</code></li>
@@ -772,7 +777,7 @@ Rules:
       transition: 'fade',
       transitionSpeed: 'fast',
       backgroundTransition: 'none',
-      width: 960,
+      width: 1080,
       height: 760,
       margin: 0.08,
       minScale: 0.1,

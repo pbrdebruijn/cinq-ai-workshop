@@ -49,7 +49,7 @@ Ask Claude:
 
 ### 4. Use MCP to implement a dashboard widget
 
-Open `workshop-dashboard-app` in Claude Code. Pick one of the remaining empty widget slots and ask Claude to implement it, but this time tell it to use context7 to look up the correct API first:
+Open `assignment-a-dashboard-app` in Claude Code. Pick one of the remaining empty widget slots and ask Claude to implement it, but this time tell it to use context7 to look up the correct API first:
 
 > "Use context7 to look up the Open-Meteo API docs, then implement the Weather Overview card in src/app/page.tsx."
 

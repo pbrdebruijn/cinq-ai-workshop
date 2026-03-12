@@ -5,7 +5,7 @@ Claude Code skills are Markdown files that become `/slash-commands` in any sessi
 ## Get started
 
 ```bash
-cd workshop-todo-app
+cd assignment-b-todo-app
 npm install
 npm run dev
 # Open http://localhost:3000 — note how the UI looks now
@@ -17,7 +17,7 @@ npm run dev
 
 ### 1. Write a CLAUDE.md
 
-Create `workshop-todo-app/CLAUDE.md` with your project's conventions so Claude has ambient context in every session:
+Create `assignment-b-todo-app/CLAUDE.md` with your project's conventions so Claude has ambient context in every session:
 
 ```markdown
 # Todo App
@@ -35,11 +35,11 @@ Next.js 15, React, Tailwind CSS, TypeScript
 - Mobile-first, single-column layout
 ```
 
-Test it: open a new Claude Code session in the `workshop-todo-app` folder and ask "what font does this project use?" — Claude should answer from CLAUDE.md without reading any source file.
+Test it: open a new Claude Code session in the `assignment-b-todo-app` folder and ask "what font does this project use?" — Claude should answer from CLAUDE.md without reading any source file.
 
 ### 2. Create a /redesign skill
 
-Create the file `.claude/commands/redesign.md` inside `workshop-todo-app`:
+Create the file `.claude/commands/redesign.md` inside `assignment-b-todo-app`:
 
 ```markdown
 Review the UI/UX of $ARGUMENTS (default: src/app/page.tsx if not specified).
@@ -58,7 +58,7 @@ Constraints:
 
 ### 3. Run the skill and review
 
-In Claude Code (inside `workshop-todo-app`):
+In Claude Code (inside `assignment-b-todo-app`):
 
 ```
 /redesign

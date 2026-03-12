@@ -23,12 +23,14 @@
 - **Composer**: Multi-file changes in one go
 - **Chat panel**: Codebase-aware conversations with @-mentions
 
-**Recent changes (late 2024 - early 2025)**:
-- Agent mode in Composer (autonomous multi-step execution)
-- Background agents (run tasks asynchronously)
-- Improved context with @-mentions (@codebase, @web, @docs)
-- Rules files (`.cursorrules`) for project-specific behavior
-- Better memory and context retention
+**Recent changes (v1.0 June 2025 → v2.6 March 2026)**:
+- **Multi-agents** — up to 8 agents run in parallel, each in an isolated git worktree
+- **Plugin Marketplace** — bundles skills, subagents, MCP servers & hooks (Figma, Linear, AWS…)
+- **Automations** — always-on cloud agents triggered by Slack, GitHub, Linear, or PagerDuty events
+- **Bugbot** — automatically reviews PRs on GitHub with a "Fix in Cursor" shortcut
+- **Debug Mode** — instruments apps with runtime logs to reproduce tricky bugs
+- **Cursor Blame** (Enterprise) — AI attribution in git blame for Tab vs agent vs human edits
+- In-editor browser, image generation, JetBrains support (March 2026)
 
 ---
 
@@ -43,12 +45,15 @@
 - Git integration (commits, PRs, branches)
 - Plan mode for complex architectural tasks
 
-**Recent changes**:
-- MCP (Model Context Protocol) server support
-- Hooks system for automation and guardrails
-- Background agents for long-running tasks
-- Custom slash commands
-- Improved context management and summarization
+**Recent changes (GA May 2025 → March 2026)**:
+- **Subagents** — up to 7 parallel agents, each with own context & tool permissions
+- **Hooks system** — shell or HTTP hooks on Pre/PostToolUse, Stop, WorktreeCreate events
+- **Skills** — reusable `SKILL.md` packages; agents discover & apply them automatically
+- **Checkpoints** — auto-snapshots before every change; rewind with `/rewind`
+- **MCP** — 300+ integrations, one-click install, dynamic tool loading
+- **GitHub integration** — tag Claude Code on PRs to fix CI errors & review comments
+- **Agent SDK** — build custom agents on top of Claude Code's full toolchain
+- Sandboxing, cron scheduling, `/loop`, Sonnet 4.5 default (2026)
 
 ---
 
@@ -75,10 +80,10 @@ Choose one of the following assignments for participants.
 
 **Goal**: Implement the empty widget slots in an existing partially-built analytics dashboard.
 
-**Starting point**: Provided repo — `workshop-dashboard-app`
+**Starting point**: Provided repo — `assignment-a-dashboard-app`
 
 ```bash
-cd workshop-dashboard-app
+cd assignment-a-dashboard-app
 npm run dev
 # Open http://localhost:3000
 ```
@@ -113,10 +118,10 @@ npm run dev
 
 **Goal**: Find and fix 3 intentional bugs in a provided Next.js todo application.
 
-**Starting point**: Provided repo — `workshop-todo-app`
+**Starting point**: Provided repo — `assignment-b-todo-app`
 
 ```bash
-cd workshop-todo-app
+cd assignment-b-todo-app
 npm run dev
 # Open http://localhost:3000
 ```
@@ -165,7 +170,7 @@ claude mcp add github npx -- -y @modelcontextprotocol/server-github
 2. Use `context7` to ask Claude a question about the Next.js App Router or Tailwind v4 — note how it cites a live doc page
 3. Ask the same question *without* MCP context (new session) — compare the quality and recency of the answers
 4. Use the GitHub MCP to list open issues on `vercel/next.js` and have Claude summarise the top 3 by recent activity
-5. Use the live context from `context7` to **implement a new widget** in `workshop-dashboard-app` that you previously left empty
+5. Use the live context from `context7` to **implement a new widget** in `assignment-a-dashboard-app` that you previously left empty
 6. *(Bonus)* Configure the same MCP servers in Cursor via `.cursor/mcp.json` and compare the experience
 
 **Evaluation criteria**:
@@ -187,7 +192,7 @@ claude mcp add github npx -- -y @modelcontextprotocol/server-github
 
 **Requirements**:
 
-1. **Create a `/redesign` skill** at `.claude/commands/redesign.md` in `workshop-todo-app`:
+1. **Create a `/redesign` skill** at `.claude/commands/redesign.md` in `assignment-b-todo-app`:
    ```markdown
    Review the UI/UX of $ARGUMENTS (or the whole page if none given).
    1. List issues: contrast, spacing, accessibility, visual hierarchy
@@ -197,7 +202,7 @@ claude mcp add github npx -- -y @modelcontextprotocol/server-github
    ```
 2. Run `/redesign` on `src/app/page.tsx` — review the output
 3. Refine the skill prompt (tighten constraints, add animation requirements, etc.) and run again — compare outputs
-4. Add a `CLAUDE.md` to `workshop-todo-app` documenting the design tokens and conventions so Claude has ambient context on every run
+4. Add a `CLAUDE.md` to `assignment-b-todo-app` documenting the design tokens and conventions so Claude has ambient context on every run
 5. *(Bonus)* Add a `/component` skill that scaffolds a new styled React component from a one-line description
 6. *(Bonus)* Create an equivalent Cursor Rules file (`.cursor/rules/ui.mdc`) and compare how Cursor applies it vs Claude Code
 
