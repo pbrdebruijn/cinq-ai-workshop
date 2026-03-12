@@ -143,59 +143,72 @@ npm run dev
 
 ---
 
-### Option C: API Search App
+### Option C: MCP Power Tools
 
-**Goal**: Build a search interface around a public API using Next.js Server Actions.
+**Goal**: Configure and use MCP (Model Context Protocol) servers inside Claude Code to unlock richer AI assistance.
 
-**Starting point**: Fresh Next.js app (`npx create-next-app@latest`)
+**Context**: MCP servers let Claude call external tools — live documentation, GitHub, databases, filesystems — directly during a conversation. This assignment explores what becomes possible when you wire them up.
 
-**API choices** (pick one):
-- Movies: [OMDB API](https://www.omdbapi.com/) (free API key)
-- Weather: [Open-Meteo](https://open-meteo.com/) (no key)
-- Crypto: [CoinGecko](https://www.coingecko.com/en/api) (no key)
-- News: [Hacker News Search API](https://hn.algolia.com/api) (no key)
+**Setup (suggested servers)**:
+
+```bash
+# context7 — always up-to-date library docs
+claude mcp add context7 npx -- -y @upstash/context7-mcp
+
+# GitHub MCP — interact with repos, issues, PRs
+claude mcp add github npx -- -y @modelcontextprotocol/server-github
+# Requires: export GITHUB_PERSONAL_ACCESS_TOKEN=<your PAT>
+```
 
 **Requirements**:
-1. Search input (controlled, with submit)
-2. A **Server Action** that calls the chosen API
-3. Display results in styled cards or a list
-4. Loading indicator while the action is running
-5. Error state when the API call fails
-6. Recent searches stored in `localStorage`
-7. Responsive design with Tailwind CSS
+1. Successfully configure at least **2 MCP servers** (verify with `claude mcp list`)
+2. Use `context7` to ask Claude a question about the Next.js App Router or Tailwind v4 — note how it cites a live doc page
+3. Ask the same question *without* MCP context (new session) — compare the quality and recency of the answers
+4. Use the GitHub MCP to list open issues on `vercel/next.js` and have Claude summarise the top 3 by recent activity
+5. Use the live context from `context7` to **implement a new widget** in `workshop-dashboard-app` that you previously left empty
+6. *(Bonus)* Configure the same MCP servers in Cursor via `.cursor/mcp.json` and compare the experience
 
 **Evaluation criteria**:
-- Correct use of Server Actions (`'use server'`) vs client components
-- Proper loading and error UX
-- AI's ability to adapt to the chosen API's response shape
+- Were both servers correctly configured and usable inside Claude Code?
+- Was there a measurable difference in answer quality with vs without `context7`?
+- Did the MCP-assisted widget implementation require fewer correction prompts?
+
+**Facilitator notes**:
+- If GitHub PAT setup is slow, skip the GitHub MCP and add `@modelcontextprotocol/server-filesystem` instead (no auth needed)
+- `context7` fetches docs at query time — the contrast with a session without it is the key teaching moment
 
 ---
 
-### Option D: AI Chatbot with Claude API
+### Option D: UI Redesign with a Custom Skill
 
-**Goal**: Build a minimal streaming chat interface backed by the Anthropic Claude API.
+**Goal**: Write a reusable Claude Code slash command (skill) that critiques and redesigns UI components, then iterate on both the skill and the app.
 
-**Starting point**: Fresh Next.js app (`npx create-next-app@latest`)
+**Context**: Claude Code skills are Markdown files stored in `~/.claude/commands/` (global) or `.claude/commands/` (project-scoped). They become `/skill-name` slash commands in any Claude Code session. This assignment teaches how to encode your own best practices into reusable AI commands.
 
 **Requirements**:
-1. Chat UI with message bubbles (user on the right, assistant on the left)
-2. A Next.js Route Handler (`app/api/chat/route.ts`) that calls the Claude API
-3. Stream the response — text appears token-by-token (use `ReadableStream` or `ai` SDK)
-4. Keep full conversation history in state and send it with each request
-5. *(Bonus)* System prompt input so users can customise the assistant persona
-6. *(Bonus)* Copy-to-clipboard button on assistant messages
-7. *(Bonus)* Clear conversation button
 
-**Setup**:
-```bash
-npm install @anthropic-ai/sdk
-# Add ANTHROPIC_API_KEY to .env.local
-```
+1. **Create a `/redesign` skill** at `.claude/commands/redesign.md` in `workshop-todo-app`:
+   ```markdown
+   Review the UI/UX of $ARGUMENTS (or the whole page if none given).
+   1. List issues: contrast, spacing, accessibility, visual hierarchy
+   2. Propose fixes with specific Tailwind classes
+   3. Implement the fixes — dark theme, rounded corners, proper focus states
+   Design constraints: zinc/amber palette, DM Sans font, mobile-first.
+   ```
+2. Run `/redesign` on `src/app/page.tsx` — review the output
+3. Refine the skill prompt (tighten constraints, add animation requirements, etc.) and run again — compare outputs
+4. Add a `CLAUDE.md` to `workshop-todo-app` documenting the design tokens and conventions so Claude has ambient context on every run
+5. *(Bonus)* Add a `/component` skill that scaffolds a new styled React component from a one-line description
+6. *(Bonus)* Create an equivalent Cursor Rules file (`.cursor/rules/ui.mdc`) and compare how Cursor applies it vs Claude Code
 
 **Evaluation criteria**:
-- Streaming implementation (real-time token rendering vs waiting for full response)
-- Correct message history structure (`{ role: 'user' | 'assistant', content: string }[]`)
-- AI's ability to wire up the Anthropic SDK correctly from a single prompt
+- How much did refining the skill prompt improve the output quality?
+- Does the `CLAUDE.md` visibly influence Claude's responses (test: ask "what fonts does this project use?")?
+- Did the redesigned todo app look and feel noticeably better?
+
+**Facilitator notes**:
+- The key lesson is *iteration* — the first skill draft will produce mediocre output; improving the prompt is the exercise
+- Participants who finish early can compare project-scoped vs global skills and discuss the trade-offs
 
 ---
 
@@ -348,8 +361,8 @@ Participants work on their own project or idea.
 
 - [Cursor Documentation](https://docs.cursor.com)
 - [Claude Code Documentation](https://docs.anthropic.com/claude-code)
-- [Claude API Documentation](https://docs.anthropic.com/en/api/getting-started)
+- [Claude Code MCP Guide](https://docs.anthropic.com/en/docs/claude-code/mcp)
+- [MCP Server Registry](https://github.com/modelcontextprotocol/servers)
+- [context7 MCP](https://github.com/upstash/context7)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Open-Meteo API](https://open-meteo.com/en/docs) — free, no auth required
-- [CoinGecko API](https://www.coingecko.com/en/api) — free, no auth required
-- [Hacker News Search API](https://hn.algolia.com/api) — free, no auth required

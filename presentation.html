@@ -529,12 +529,12 @@
             <p>Existing app &bull; Find &amp; fix 3 intentional bugs</p>
           </div>
           <div class="feature-card">
-            <h4>C: API Search App</h4>
-            <p>Greenfield &bull; Server Actions, public API, results UI</p>
+            <h4>C: MCP Power Tools</h4>
+            <p>Claude Code &bull; Configure &amp; use MCP servers</p>
           </div>
           <div class="feature-card">
-            <h4>D: AI Chatbot</h4>
-            <p>Greenfield &bull; Claude API, streaming, chat UI</p>
+            <h4>D: UI Redesign via Skill</h4>
+            <p>Claude Code &bull; Write &amp; iterate a /redesign slash command</p>
           </div>
         </div>
       </section>
@@ -572,33 +572,33 @@
 
       <!-- ══ Assignment C ══ -->
       <section data-background-color="#09090b">
-        <h2>Option C &mdash; API Search App</h2>
+        <h2>Option C &mdash; MCP Power Tools</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>npx create-next-app@latest</code>
+          <code>claude mcp add context7 npx -- -y @upstash/context7-mcp</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Search input that calls a public API via a <strong>Server Action</strong></li>
-          <li>Pick any API: OMDB (movies), OpenWeatherMap, CoinGecko, or Hacker News</li>
-          <li>Display results in cards or a list</li>
-          <li>Handle loading states and errors gracefully</li>
-          <li>Store recent searches in <code>localStorage</code></li>
-          <li>Fully responsive, styled with Tailwind CSS</li>
+          <li>Configure <strong>2&ndash;3 MCP servers</strong> in Claude Code</li>
+          <li><strong>context7</strong> &mdash; ask Claude for up-to-date Next.js &amp; Tailwind docs</li>
+          <li><strong>GitHub MCP</strong> &mdash; browse issues, open PRs, summarise a repo</li>
+          <li>Compare answers with vs without MCP context</li>
+          <li>Use the live context to add a new widget to the dashboard app</li>
+          <li>Bonus: configure MCP in Cursor via <code>.cursor/mcp.json</code> and compare</li>
         </ul>
       </section>
 
       <!-- ══ Assignment D ══ -->
       <section data-background-color="#09090b">
-        <h2>Option D &mdash; AI Chatbot</h2>
+        <h2>Option D &mdash; UI Redesign with a Skill</h2>
         <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>npx create-next-app@latest</code>
+          <code>~/.claude/commands/redesign.md</code>
         </div>
         <ul style="font-size: 0.8em;">
-          <li>Chat UI with message bubbles (user &amp; assistant)</li>
-          <li>Next.js Route Handler calling the <strong>Anthropic Claude API</strong></li>
-          <li>Stream the response so text appears token-by-token</li>
-          <li>Keep full conversation history in state</li>
-          <li>Bonus: system prompt input to customise the assistant persona</li>
-          <li>Bonus: copy-to-clipboard or clear-conversation button</li>
+          <li>Write a <strong>/redesign</strong> slash command that instructs Claude how to critique and improve any component's UI/UX</li>
+          <li>Run it on the todo app &mdash; dark theme, spacing, animations, accessibility</li>
+          <li>Iterate: refine the skill prompt, run again, compare results</li>
+          <li>Add a <code>CLAUDE.md</code> with your design tokens and conventions</li>
+          <li>Bonus: add a <strong>/component</strong> skill that scaffolds new styled components</li>
+          <li>Bonus: configure an equivalent <code>.cursor/rules</code> file for Cursor</li>
         </ul>
       </section>
 
@@ -747,9 +747,9 @@ Rules:
         <ul style="font-size: 0.85em; margin-top: 0.5em;">
           <li><a href="https://docs.cursor.com">docs.cursor.com</a></li>
           <li><a href="https://docs.anthropic.com/docs">docs.anthropic.com/docs</a> &mdash; Claude Code</li>
-          <li><a href="https://docs.anthropic.com/en/api/getting-started">docs.anthropic.com/en/api</a> &mdash; Claude API</li>
+          <li><a href="https://docs.anthropic.com/en/docs/claude-code/mcp">docs.anthropic.com &mdash; MCP Guide</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/servers">github.com/modelcontextprotocol/servers</a></li>
           <li><a href="https://nextjs.org/docs">nextjs.org/docs</a></li>
-          <li><a href="https://open-meteo.com/en/docs">open-meteo.com/en/docs</a> &mdash; free weather API</li>
         </ul>
       </section>
 
