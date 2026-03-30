@@ -1,2 +1,5 @@
 .DS_Store
 .obsidian/
+
+#Ignore cursor AI rules
+.cursor/rules/codacy.mdc

@@ -4,340 +4,210 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Developer Tools Workshop - Cinq ICT</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/theme/night.css">
+  <!-- Colorful dark theme overrides -->
   <style>
+    /* ── Base dark background with subtle gradient ── */
     :root {
-      --zinc-950: #09090b;
-      --zinc-900: #18181b;
-      --zinc-800: #27272a;
-      --zinc-700: #3f3f46;
-      --zinc-600: #52525b;
-      --zinc-500: #71717a;
-      --zinc-400: #a1a1aa;
-      --zinc-300: #d4d4d8;
-      --zinc-200: #e4e4e7;
-      --zinc-100: #f4f4f5;
-      --amber:    #fbbf24;
-      --amber-dim: #92400e;
-      --red-soft: #f87171;
-      --green-soft: #86efac;
-
-      --r-background-color: var(--zinc-950);
-      --r-main-color: var(--zinc-300);
-      --r-heading-color: var(--zinc-100);
-      --r-link-color: var(--amber);
-      --r-link-color-hover: #fde68a;
-      --r-main-font: 'DM Sans', sans-serif;
-      --r-heading-font: 'Caveat', cursive;
-      --r-code-font: 'DM Mono', monospace;
-      --r-heading-text-transform: none;
-      --r-heading-font-weight: 600;
+      --accent-cyan:   #00e5ff;
+      --accent-purple: #b388ff;
+      --accent-pink:   #ff4081;
+      --accent-amber:  #ffca28;
+      --accent-green:  #69ff47;
+      --accent-teal:   #64ffda;
+      --bg-dark:       #0d0d1a;
+      --bg-card:       rgba(255,255,255,0.04);
     }
 
-    /* ── Base ── */
-    .reveal-viewport { background: var(--zinc-950); }
-
-    .reveal .slides section {
-      font-family: 'DM Sans', sans-serif;
+    .reveal-viewport,
+    .reveal {
+      background: linear-gradient(135deg, #0d0d1a 0%, #13102a 50%, #0a1628 100%);
     }
 
-    /* ── Headings — handwritten ── */
-    .reveal h1,
-    .reveal h2,
-    .reveal h3,
-    .reveal h4 {
-      font-family: 'Caveat', cursive;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      text-transform: none;
+    /* ── Layout: constrain slides, scroll tall content ── */
+    .reveal .slides > section {
+      box-sizing: border-box;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      min-height: 0;
+      top: 0 !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: safe center;
+      align-items: stretch;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overflow-wrap: anywhere;
+      padding: 0.4em 0.75em;
+      -webkit-overflow-scrolling: touch;
     }
 
+    .reveal .slides > section.stack > section {
+      height: 100%;
+      max-height: 100%;
+      min-height: 0;
+      top: 0 !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: safe center;
+      align-items: stretch;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .reveal .slides section > * {
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+
+    /* ── Headings: gradient text ── */
     .reveal h1 {
-      font-size: 3.4em;
-      color: var(--amber);
-      line-height: 1.1;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      font-weight: 800;
     }
 
     .reveal h2 {
-      font-size: 1.85em;
-      color: var(--zinc-100);
-      margin: 0 0 0.3em 0;
+      background: linear-gradient(90deg, var(--accent-teal), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
     }
 
     .reveal h3 {
-      font-size: 1.5em;
-      color: var(--zinc-300);
+      color: var(--accent-purple);
     }
 
-    .reveal h4 {
-      font-size: 1.15em;
-      color: var(--amber);
-      margin: 0 0 0.25em 0;
+    /* ── Blockquotes ── */
+    .reveal blockquote {
+      max-width: 100%;
+      box-sizing: border-box;
+      border-left: 4px solid var(--accent-pink);
+      background: rgba(255, 64, 129, 0.08);
+      color: #f0f0ff;
+      padding: 0.5em 1em;
+      border-radius: 0 8px 8px 0;
     }
 
-    .reveal p {
-      font-size: 0.9em;
-      line-height: 1.45;
-      color: var(--zinc-300);
+    /* ── Lists: colored bullets ── */
+    .reveal ul li::marker {
+      color: var(--accent-cyan);
     }
 
-    /* ── Lists ── */
-    .reveal ul {
-      display: block;
-      margin-left: 1.2em;
+    .reveal ol li::marker {
+      color: var(--accent-amber);
+      font-weight: 700;
     }
 
-    .reveal li {
-      margin: 0.35em 0;
-      font-size: 0.85em;
-      color: var(--zinc-300);
-      line-height: 1.45;
+    /* ── Strong: amber highlight ── */
+    .reveal strong {
+      color: var(--accent-amber);
     }
 
-    /* ── Code ── */
+    /* ── Code blocks ── */
     .reveal pre {
       width: 100%;
-      font-size: 0.52em;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+      border: 1px solid rgba(0, 229, 255, 0.25);
       border-radius: 8px;
-      border: 1px solid var(--zinc-700);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-    }
-
-    .reveal code {
-      font-family: 'DM Mono', monospace;
-      background: var(--zinc-800);
-      color: var(--amber);
-      padding: 0.15em 0.45em;
-      border-radius: 4px;
-      font-size: 0.88em;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
     }
 
     .reveal pre code {
-      background: var(--zinc-900);
-      color: var(--zinc-200);
-      padding: 1.1em 1.3em;
-      border-radius: 8px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: rgba(0, 0, 30, 0.7);
     }
 
-    /* ── Slide number ── */
-    .reveal .slide-number {
-      background: transparent;
-      color: var(--zinc-600);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7em;
+    .reveal code:not(pre code) {
+      color: var(--accent-teal);
+      background: rgba(100, 255, 218, 0.08);
+      padding: 0.05em 0.3em;
+      border-radius: 4px;
+    }
+
+    /* ── Tables ── */
+    .reveal table {
+      width: 100%;
+      max-width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75em;
+    }
+
+    .reveal table thead th {
+      background: linear-gradient(90deg, rgba(0,229,255,0.2), rgba(179,136,255,0.2));
+      color: var(--accent-cyan);
+      border-bottom: 2px solid var(--accent-cyan);
+      padding: 0.5em;
+    }
+
+    .reveal table tbody tr:nth-child(odd) td {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .reveal table tbody tr:nth-child(even) td {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .reveal table td {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.45em 0.6em;
     }
 
     /* ── Links ── */
     .reveal a {
-      color: var(--amber);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      color: var(--accent-cyan);
     }
 
-    .reveal a:hover { color: #fde68a; }
-
-    /* ── Accent text ── */
-    .accent        { color: var(--amber); }
-    .accent-muted  { color: var(--zinc-400); }
-    .dim-text      { color: var(--zinc-500); font-size: 0.75em; }
-
-    /* ── Subtitle under h1 ── */
-    .subtitle {
-      color: var(--zinc-400);
-      font-size: 0.95em;
-      font-weight: 300;
-      font-family: 'DM Sans', sans-serif;
+    .reveal a:hover {
+      color: var(--accent-teal);
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
     }
 
-    .small-text {
-      font-size: 0.68em;
-      color: var(--zinc-500);
-      font-family: 'DM Sans', sans-serif;
+    /* ── Divider "Part N" slides ── */
+    .reveal .slides > section > p:first-child:only-of-type,
+    .reveal .slides > section > p:first-child + h1 + p {
+      color: var(--accent-purple);
     }
 
-    /* ── Hero logo text ── */
-    .logo-text {
-      font-family: 'Caveat', cursive;
-      font-size: 3.8em;
-      font-weight: 700;
-      color: var(--amber);
-      line-height: 1;
+    /* ── Slide number ── */
+    .reveal .slide-number {
+      color: var(--accent-purple);
+      background: rgba(0,0,0,0.5);
     }
 
-    /* ── Highlight box ── */
-    .highlight-box {
-      background: var(--zinc-900);
-      border-left: 3px solid var(--amber);
-      padding: 0.85em 1.1em;
-      margin: 0.5em 0;
-      border-radius: 0 6px 6px 0;
+    /* ── Progress bar ── */
+    .reveal .progress {
+      background: rgba(255,255,255,0.1);
     }
 
-    .highlight-box.bad  { border-left-color: var(--red-soft); }
-    .highlight-box.good { border-left-color: var(--green-soft); }
-
-    /* ── Two columns ── */
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5em;
-      text-align: left;
+    .reveal .progress span {
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
     }
 
-    /* ── Feature grid ── */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.55em;
-      font-size: 0.82em;
-    }
-
-    .feature-card {
-      background: var(--zinc-900);
-      border: 1px solid var(--zinc-800);
-      padding: 0.65em 0.9em;
-      border-radius: 8px;
-      text-align: left;
-      transition: border-color 0.2s;
-    }
-
-    .feature-card:hover { border-color: var(--zinc-600); }
-
-    .feature-card p {
-      margin: 0;
-      color: var(--zinc-400);
-      font-size: 0.95em;
-    }
-
-    /* ── Agenda ── */
-    .agenda-item {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      margin: 0.35em 0;
-      padding: 0.5em 1em;
-      background: var(--zinc-900);
-      border: 1px solid var(--zinc-800);
-      border-radius: 6px;
-    }
-
-    .agenda-time {
-      font-family: 'DM Mono', monospace;
-      color: var(--amber);
-      font-size: 0.75em;
-      min-width: 72px;
-      white-space: nowrap;
-      font-weight: 500;
-    }
-
-    .agenda-label {
-      color: var(--zinc-300);
-      font-size: 0.82em;
-    }
-
-    /* ── Comparison table ── */
-    .comparison-table {
+    /* ── Timeline SVGs ── */
+    .slide-cursor-whatsnew .cursor-timeline-svg,
+    .slide-claude-whatsnew .claude-timeline-svg {
       width: 100%;
-      border-collapse: collapse;
-      font-size: 0.72em;
+      max-height: 9.5em;
+      margin: 0.25em 0 0.45em;
+      flex-shrink: 0;
     }
 
-    .comparison-table th {
-      background: var(--zinc-800);
-      color: var(--amber);
-      padding: 0.75em 1em;
-      text-align: left;
-      font-family: 'Caveat', cursive;
-      font-size: 1.3em;
-      font-weight: 600;
-      border-bottom: 2px solid var(--amber);
-    }
-
-    .comparison-table td {
-      padding: 0.7em 1em;
-      border-bottom: 1px solid var(--zinc-800);
-      color: var(--zinc-300);
-    }
-
-    .comparison-table tr:nth-child(even) td {
-      background: rgba(39,39,42,0.4);
-    }
-
-    /* ── Section divider slides ── */
-    .divider-slide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .part-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7em;
-      color: var(--zinc-600);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.5em;
-    }
-
-    /* ── Blockquote ── */
-    .reveal blockquote {
-      border: none;
-      box-shadow: none;
-      background: transparent;
-      padding: 0;
-      margin: 0;
-      font-style: italic;
-      font-size: 1.5em;
-      font-family: 'Caveat', cursive;
-      color: var(--zinc-100);
-      line-height: 1.3;
-      width: 100%;
-    }
-
-    /* ── Scratch underline effect for accent spans ── */
-    .underline-amber {
-      text-decoration: underline;
-      text-decoration-color: var(--amber);
-      text-underline-offset: 4px;
-      text-decoration-thickness: 2px;
-    }
-
-    /* ── Step list ── */
-    .step-list { display: flex; flex-direction: column; gap: 0.5em; text-align: left; }
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8em;
-      background: var(--zinc-900);
-      border: 1px solid var(--zinc-800);
-      border-radius: 6px;
-      padding: 0.7em 1em;
-    }
-    .step-num {
-      font-family: 'Caveat', cursive;
-      font-size: 1.4em;
-      color: var(--amber);
-      line-height: 1;
-      min-width: 1.2em;
-    }
-    .step-text { color: var(--zinc-300); font-size: 0.85em; line-height: 1.5; }
-
-    /* ── Noise grain overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 256px 256px;
+    .slide-cursor-whatsnew .cursor-timeline-svg text,
+    .slide-claude-whatsnew .claude-timeline-svg text {
+      font-family: var(--r-main-font, sans-serif);
     }
   </style>
 </head>
@@ -346,146 +216,184 @@
     <div class="slides">
 
       <!-- ══ Title Slide ══ -->
-      <section data-background-color="#09090b">
-        <div class="logo-text">AI Developer<br>Tools</div>
-        <p class="subtitle" style="margin-top: 0.6em;">Workshop &mdash; Cinq ICT</p>
-        <p class="small-text" style="margin-top: 2.5em; letter-spacing: 0.1em; text-transform: uppercase;">
-          Cursor &nbsp;&bull;&nbsp; Claude Code &nbsp;&bull;&nbsp; Best Practices
-        </p>
+      <section>
+        <h1>AI Developer<br>Tools</h1>
+        <p>Workshop &mdash; Cinq ICT</p>
+        <p><small>Cursor &nbsp;&bull;&nbsp; Claude Code &nbsp;&bull;&nbsp; Best Practices</small></p>
       </section>
 
       <!-- ══ Quote 1 ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <blockquote>&ldquo;What is an IDE?&rdquo;</blockquote>
-        <p class="small-text" style="margin-top: 1.8em;">&mdash; and what should it be in 2026?</p>
+        <p>&mdash; and what should it be in 2026?</p>
       </section>
 
       <!-- ══ Quote 2 ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <blockquote>&ldquo;Real developers<br>read the docs.&rdquo;</blockquote>
-        <p class="small-text" style="margin-top: 1.8em;">&mdash; or do they?</p>
+        <p>&mdash; or do they?</p>
       </section>
 
       <!-- ══ Quote 3 ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <blockquote>&ldquo;The best code is the code you don&rsquo;t have to write.&rdquo;</blockquote>
-        <p class="small-text" style="margin-top: 1.8em;">&mdash; what if the bottleneck isn&rsquo;t typing anymore?</p>
+        <p>&mdash; what if the bottleneck isn&rsquo;t typing anymore?</p>
       </section>
 
       <!-- ══ Agenda ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Agenda</h2>
-        <div style="max-width: 580px; margin: 1em auto 0;">
-          <div class="agenda-item">
-            <span class="agenda-time">15 min</span>
-            <span class="agenda-label">IDE Comparison: Cursor vs Claude Code</span>
-          </div>
-          <div class="agenda-item">
-            <span class="agenda-time">45 min</span>
-            <span class="agenda-label">Guided Assignment</span>
-          </div>
-          <div class="agenda-item">
-            <span class="agenda-time">15 min</span>
-            <span class="agenda-label">Best Practices &amp; Tips</span>
-          </div>
-          <div class="agenda-item">
-            <span class="agenda-time">45 min</span>
-            <span class="agenda-label">Open Assignment</span>
-          </div>
-        </div>
+        <ul>
+          <li><strong>15 min</strong> &mdash; IDE Comparison: Cursor vs Claude Code</li>
+          <li><strong>45 min</strong> &mdash; Guided Assignment</li>
+          <li><strong>15 min</strong> &mdash; Best Practices &amp; Tips</li>
+          <li><strong>45 min</strong> &mdash; Open Assignment</li>
+        </ul>
       </section>
 
       <!-- ══ Divider: Part 1 ══ -->
-      <section data-background-color="#09090b">
-        <p class="part-label">Part 1</p>
+      <section>
+        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 1</p>
         <h1>IDE Comparison</h1>
-        <p class="subtitle">Cursor vs Claude Code</p>
+        <p style="color: #64ffda;">Cursor vs Claude Code</p>
       </section>
 
       <!-- ══ Cursor Overview ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Cursor</h2>
-        <p class="accent-muted" style="font-size: 0.8em; margin-bottom: 1em;">VS Code fork with AI deeply integrated</p>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>Tab Completion</h4>
-            <p>Autocomplete on steroids, predicts multi-line changes</p>
-          </div>
-          <div class="feature-card">
-            <h4>Cmd+K</h4>
-            <p>Inline editing with natural language</p>
-          </div>
-          <div class="feature-card">
-            <h4>Composer</h4>
-            <p>Multi-file changes in one go</p>
-          </div>
-          <div class="feature-card">
-            <h4>Chat Panel</h4>
-            <p>Codebase-aware with @-mentions</p>
-          </div>
-        </div>
+        <p>VS Code fork with AI deeply integrated</p>
+        <ul>
+          <li><strong>Tab Completion</strong> &mdash; Autocomplete on steroids, predicts multi-line changes</li>
+          <li><strong>Cmd+K</strong> &mdash; Inline editing with natural language</li>
+          <li><strong>Composer</strong> &mdash; Multi-file changes in one go</li>
+          <li><strong>Chat Panel</strong> &mdash; Codebase-aware with @-mentions</li>
+        </ul>
       </section>
 
-      <!-- ══ Cursor Recent Changes ══ -->
-      <section data-background-color="#09090b">
+      <!-- ══ Cursor Recent Changes (see cursor.com/docs — plugins, cloud agent, Bugbot, agent modes) ══ -->
+      <section class="slide-cursor-whatsnew">
         <h2>Cursor &mdash; What&rsquo;s New</h2>
-        <p class="small-text" style="margin-bottom: 0.8em;">v1.0 June 2025 &rarr; v2.6 March 2026</p>
-        <ul>
-          <li><span class="accent">Multi-agents</span> &mdash; up to 8 agents in parallel, each in an isolated git worktree</li>
-          <li><span class="accent">Subagents &amp; Skills</span> &mdash; scoped agents for discrete subtasks + <code>SKILL.md</code> knowledge packages</li>
-          <li><span class="accent">Plugin Marketplace</span> &mdash; bundles skills, subagents, MCP servers &amp; hooks (Figma, Linear, AWS&hellip;)</li>
-          <li><span class="accent">Automations</span> &mdash; always-on cloud agents triggered by Slack, GitHub, Linear events</li>
-          <li><span class="accent">Bugbot</span> &mdash; auto-reviews PRs on GitHub with a &ldquo;Fix in Cursor&rdquo; shortcut</li>
-          <li><span class="accent">Debug Mode</span> &mdash; instruments apps with runtime logs to reproduce tricky bugs</li>
-          <li><span class="accent">Cursor Blame</span> (Enterprise) &mdash; AI attribution in git blame for Tab vs agent vs human</li>
-          <li>In-editor browser, image generation, JetBrains support (March 2026)</li>
+        <p><small>From the current docs: ecosystem around agents, then review &amp; diagnosis</small></p>
+
+        <svg class="cursor-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: mid-2025 Cursor 1.0, then plugins, cloud agents and Bugbot, then debug mode and MCP agent">
+          <defs>
+            <linearGradient id="cursor-tl-line" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.3"/>
+              <stop offset="50%" style="stop-color:#b388ff;stop-opacity:0.8"/>
+              <stop offset="100%" style="stop-color:#ff4081;stop-opacity:1"/>
+            </linearGradient>
+            <filter id="cursor-tl-glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <line x1="72" y1="78" x2="848" y2="78" stroke="url(#cursor-tl-line)" stroke-width="4" stroke-linecap="round"/>
+
+          <g filter="url(#cursor-tl-glow)">
+            <circle cx="160" cy="78" r="10" fill="#00e5ff"/>
+            <circle cx="360" cy="78" r="10" fill="#b388ff"/>
+            <circle cx="560" cy="78" r="10" fill="#ffca28"/>
+            <circle cx="760" cy="78" r="12" fill="#ff4081"/>
+          </g>
+          <circle cx="160" cy="78" r="5" fill="#111"/>
+          <circle cx="360" cy="78" r="5" fill="#111"/>
+          <circle cx="560" cy="78" r="5" fill="#111"/>
+          <circle cx="760" cy="78" r="6" fill="#111"/>
+
+          <text x="160" y="38" text-anchor="middle" fill="#00e5ff" font-size="15" font-weight="700">Mid-2025</text>
+          <text x="360" y="38" text-anchor="middle" fill="#b388ff" font-size="15" font-weight="700">Plugins</text>
+          <text x="560" y="38" text-anchor="middle" fill="#ffca28" font-size="15" font-weight="700">Cloud + Bugbot</text>
+          <text x="760" y="38" text-anchor="middle" fill="#ff4081" font-size="15" font-weight="700">Agent modes</text>
+
+          <text x="160" y="118" text-anchor="middle" fill="#fff" font-size="14">1.0 launch</text>
+          <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="13">Skills, MCP, hooks</text>
+          <text x="360" y="130" text-anchor="middle" fill="#aaa" font-size="11">bundled in plugins</text>
+          <text x="560" y="112" text-anchor="middle" fill="#fff" font-size="13">Background agents</text>
+          <text x="560" y="130" text-anchor="middle" fill="#aaa" font-size="11">PR review (Bugbot)</text>
+          <text x="760" y="112" text-anchor="middle" fill="#fff" font-size="13">Debug mode</text>
+          <text x="760" y="130" text-anchor="middle" fill="#aaa" font-size="11">logs &amp; MCP agent CLI</text>
+        </svg>
+
+        <ul style="font-size: 0.72em; margin-bottom: 0;">
+          <li><strong>Plugins</strong> ship rules, skills, agents, commands, MCP servers &amp; hooks together.</li>
+          <li><strong>Bugbot</strong> reviews GitHub PRs; <strong>Debug</strong> mode gathers runtime evidence before fixing.</li>
         </ul>
       </section>
 
       <!-- ══ Claude Code Overview ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Claude Code</h2>
-        <p class="accent-muted" style="font-size: 0.8em; margin-bottom: 1em;">Terminal-based agentic coding assistant</p>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>Editor Agnostic</h4>
-            <p>Works alongside any editor you prefer</p>
-          </div>
-          <div class="feature-card">
-            <h4>Autonomous</h4>
-            <p>File editing + command execution</p>
-          </div>
-          <div class="feature-card">
-            <h4>Deep Exploration</h4>
-            <p>Understands entire codebase context</p>
-          </div>
-          <div class="feature-card">
-            <h4>Git Integration</h4>
-            <p>Commits, PRs, branches built-in</p>
-          </div>
-        </div>
+        <p>Terminal-based agentic coding assistant</p>
+        <ul>
+          <li><strong>Editor Agnostic</strong> &mdash; Works alongside any editor you prefer</li>
+          <li><strong>Autonomous</strong> &mdash; File editing + command execution</li>
+          <li><strong>Deep Exploration</strong> &mdash; Understands entire codebase context</li>
+          <li><strong>Git Integration</strong> &mdash; Commits, PRs, branches built-in</li>
+        </ul>
       </section>
 
-      <!-- ══ Claude Code Recent Changes ══ -->
-      <section data-background-color="#09090b">
+      <!-- ══ Claude Code Recent Changes (see code.claude.com/docs — overview, IDE, MCP, GitHub) ══ -->
+      <section class="slide-claude-whatsnew">
         <h2>Claude Code &mdash; What&rsquo;s New</h2>
-        <p class="small-text" style="margin-bottom: 0.8em;">GA May 2025 &bull; Terminal, VS Code, JetBrains, GitHub Actions</p>
-        <ul>
-          <li><span class="accent">Subagents</span> &mdash; up to 7 parallel agents, each with own context &amp; permissions</li>
-          <li><span class="accent">Hooks system</span> &mdash; shell or HTTP hooks on Pre/PostToolUse, Stop, WorktreeCreate</li>
-          <li><span class="accent">Skills</span> &mdash; reusable <code>SKILL.md</code> packages; agents discover &amp; apply them automatically</li>
-          <li><span class="accent">Checkpoints</span> &mdash; auto-snapshots before every change; rewind with <code>/rewind</code></li>
-          <li><span class="accent">MCP</span> &mdash; 300+ integrations, one-click install, dynamic tool loading</li>
-          <li><span class="accent">GitHub integration</span> &mdash; tag Claude Code on PRs to fix CI errors &amp; review comments</li>
-          <li><span class="accent">Agent SDK</span> &mdash; build custom agents on top of Claude Code&rsquo;s full toolchain</li>
-          <li>Sandboxing, cron scheduling, <code>/loop</code>, Sonnet 4.5 default (2026)</li>
+        <p><small>From the current docs: terminal agent &rarr; editor &amp; safety &rarr; platform &rarr; integrations</small></p>
+
+        <svg class="claude-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: GA CLI agent, IDE checkpoints and rewind, MCP skills hooks and sandbox, GitHub and Agent SDK">
+          <defs>
+            <linearGradient id="claude-tl-line" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#64ffda;stop-opacity:0.3"/>
+              <stop offset="50%" style="stop-color:#00e5ff;stop-opacity:0.8"/>
+              <stop offset="100%" style="stop-color:#b388ff;stop-opacity:1"/>
+            </linearGradient>
+            <filter id="claude-tl-glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <line x1="72" y1="78" x2="848" y2="78" stroke="url(#claude-tl-line)" stroke-width="4" stroke-linecap="round"/>
+
+          <g filter="url(#claude-tl-glow)">
+            <circle cx="160" cy="78" r="10" fill="#64ffda"/>
+            <circle cx="360" cy="78" r="10" fill="#00e5ff"/>
+            <circle cx="560" cy="78" r="10" fill="#ffca28"/>
+            <circle cx="760" cy="78" r="12" fill="#b388ff"/>
+          </g>
+          <circle cx="160" cy="78" r="5" fill="#111"/>
+          <circle cx="360" cy="78" r="5" fill="#111"/>
+          <circle cx="560" cy="78" r="5" fill="#111"/>
+          <circle cx="760" cy="78" r="6" fill="#111"/>
+
+          <text x="160" y="38" text-anchor="middle" fill="#64ffda" font-size="15" font-weight="700">GA era</text>
+          <text x="360" y="38" text-anchor="middle" fill="#00e5ff" font-size="15" font-weight="700">IDE</text>
+          <text x="560" y="38" text-anchor="middle" fill="#ffca28" font-size="15" font-weight="700">Platform</text>
+          <text x="760" y="38" text-anchor="middle" fill="#b388ff" font-size="15" font-weight="700">Ecosystem</text>
+
+          <text x="160" y="118" text-anchor="middle" fill="#fff" font-size="14">CLI agent</text>
+          <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="13">Checkpoints</text>
+          <text x="360" y="130" text-anchor="middle" fill="#aaa" font-size="11">rewind &amp; fork</text>
+          <text x="560" y="112" text-anchor="middle" fill="#fff" font-size="13">MCP &amp; skills</text>
+          <text x="560" y="130" text-anchor="middle" fill="#aaa" font-size="11">hooks, plugins, sandbox</text>
+          <text x="760" y="112" text-anchor="middle" fill="#fff" font-size="13">GitHub + SDK</text>
+          <text x="760" y="130" text-anchor="middle" fill="#aaa" font-size="11">@claude, Agent SDK</text>
+        </svg>
+
+        <ul style="font-size: 0.72em; margin-bottom: 0;">
+          <li><strong>VS Code / Cursor extension</strong> &mdash; inline diffs, @-mentions, plan review, checkpoint rewind.</li>
+          <li><strong>MCP</strong> connects tools; <strong>hooks</strong> automate around tool use; <strong>sandbox</strong> bounds bash.</li>
         </ul>
       </section>
 
       <!-- ══ Comparison Table ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>When to Use Which?</h2>
-        <table class="comparison-table" style="margin-top: 0.8em;">
+        <table>
           <thead>
             <tr>
               <th>Cursor</th>
@@ -511,46 +419,32 @@
             </tr>
           </tbody>
         </table>
-        <p class="small-text" style="margin-top: 0.9em;">Both support <code>SKILL.md</code> for custom workflows. They work great together &mdash; Claude Code for big changes, Cursor for refinement.</p>
+        <p><small>Both support <code>SKILL.md</code> for custom workflows. They work great together &mdash; Claude Code for big changes, Cursor for refinement.</small></p>
       </section>
 
       <!-- ══ Divider: Part 2 ══ -->
-      <section data-background-color="#09090b">
-        <p class="part-label">Part 2</p>
+      <section>
+        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 2</p>
         <h1>Guided<br>Assignment</h1>
-        <p class="subtitle">45 minutes hands-on</p>
+        <p style="color: #64ffda;">45 minutes hands-on</p>
       </section>
 
       <!-- ══ Assignment Options ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Assignment Options</h2>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>A: Extend the Dashboard</h4>
-            <p>Existing app &bull; Add live API widgets to a partial dashboard</p>
-          </div>
-          <div class="feature-card">
-            <h4>B: Debug the Todo App</h4>
-            <p>Existing app &bull; Find &amp; fix 3 intentional bugs</p>
-          </div>
-          <div class="feature-card">
-            <h4>C: MCP Power Tools</h4>
-            <p>Claude Code &bull; Configure &amp; use MCP servers</p>
-          </div>
-          <div class="feature-card">
-            <h4>D: UI Redesign via Skill</h4>
-            <p>Claude Code &bull; Write &amp; iterate a /redesign slash command</p>
-          </div>
-        </div>
+        <ul>
+          <li><strong>A: Extend the Dashboard</strong> &mdash; Existing app &bull; Add live API widgets to a partial dashboard</li>
+          <li><strong>B: Debug the Todo App</strong> &mdash; Existing app &bull; Find &amp; fix 3 intentional bugs</li>
+          <li><strong>C: MCP Power Tools</strong> &mdash; Claude Code &bull; Configure &amp; use MCP servers</li>
+          <li><strong>D: UI Redesign via Skill</strong> &mdash; Claude Code &bull; Write &amp; iterate a /redesign slash command</li>
+        </ul>
       </section>
 
       <!-- ══ Assignment A ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Option A &mdash; Extend the Dashboard</h2>
-        <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code>
-        </div>
-        <ul style="font-size: 0.8em;">
+        <pre><code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code></pre>
+        <ul>
           <li>3 live widgets already built &mdash; use them as patterns</li>
           <li>Implement <strong>Weather</strong> card &mdash; Open-Meteo API (no key needed)</li>
           <li>Implement <strong>Crypto Markets</strong> card &mdash; CoinGecko API (BTC, ETH, SOL)</li>
@@ -561,13 +455,11 @@
       </section>
 
       <!-- ══ Assignment B ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Option B &mdash; Debug the Todo App</h2>
-        <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>cd assignment-b-todo-app &amp;&amp; npm run dev</code>
-        </div>
-        <ul style="font-size: 0.8em;">
-          <li>The app has <span class="accent">3 intentional bugs</span> hidden in <code>src/app/page.tsx</code></li>
+        <pre><code>cd assignment-b-todo-app &amp;&amp; npm run dev</code></pre>
+        <ul>
+          <li>The app has <strong>3 intentional bugs</strong> hidden in <code>src/app/page.tsx</code></li>
           <li>Use AI to explore the code, describe symptoms, and locate root causes</li>
           <li>Fix each bug with AI assistance &mdash; verify behaviour after each fix</li>
           <li>Bonus: add <code>localStorage</code> persistence so todos survive refresh</li>
@@ -576,12 +468,10 @@
       </section>
 
       <!-- ══ Assignment C ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Option C &mdash; MCP Power Tools</h2>
-        <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>claude mcp add context7 npx -- -y @upstash/context7-mcp</code>
-        </div>
-        <ul style="font-size: 0.8em;">
+        <pre><code>claude mcp add context7 npx -- -y @upstash/context7-mcp</code></pre>
+        <ul>
           <li>Configure <strong>2&ndash;3 MCP servers</strong> in Claude Code</li>
           <li><strong>context7</strong> &mdash; ask Claude for up-to-date Next.js &amp; Tailwind docs</li>
           <li><strong>GitHub MCP</strong> &mdash; browse issues, open PRs, summarise a repo</li>
@@ -592,12 +482,10 @@
       </section>
 
       <!-- ══ Assignment D ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Option D &mdash; UI Redesign with a Skill</h2>
-        <div class="highlight-box" style="margin-bottom: 1em;">
-          <code>~/.claude/commands/redesign.md</code>
-        </div>
-        <ul style="font-size: 0.8em;">
+        <pre><code>~/.claude/commands/redesign.md</code></pre>
+        <ul>
           <li>Write a <strong>/redesign</strong> slash command that instructs Claude how to critique and improve any component's UI/UX</li>
           <li>Run it on the todo app &mdash; dark theme, spacing, animations, accessibility</li>
           <li>Iterate: refine the skill prompt, run again, compare results</li>
@@ -608,50 +496,43 @@
       </section>
 
       <!-- ══ Divider: Part 3 ══ -->
-      <section data-background-color="#09090b">
-        <p class="part-label">Part 3</p>
+      <section>
+        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 3</p>
         <h1>Best Practices</h1>
-        <p class="subtitle">Tips for effective AI-assisted coding</p>
+        <p style="color: #64ffda;">Tips for effective AI-assisted coding</p>
       </section>
 
       <!-- ══ Context Management ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Context Management</h2>
-        <div class="highlight-box bad" style="margin-bottom: 0.6em;">
-          <p style="color: var(--red-soft); margin: 0; font-size: 0.8em;"><strong>Bad:</strong> &ldquo;Fix the login bug&rdquo;</p>
-        </div>
-        <div class="highlight-box good" style="margin-bottom: 1em;">
-          <p style="color: var(--green-soft); margin: 0; font-size: 0.8em;"><strong>Good:</strong> &ldquo;In <code>src/auth/validate.ts</code>, JWT validation fails when tokens contain special characters. Error on line 45.&rdquo;</p>
-        </div>
-        <ul style="font-size: 0.8em;">
-          <li><span class="accent">Reference files explicitly</span> &mdash; use @-mentions or paths</li>
-          <li><span class="accent">Chunk large tasks</span> &mdash; smaller, verifiable steps</li>
-          <li><span class="accent">Fresh context</span> &mdash; new session for unrelated tasks</li>
+        <p><strong>Bad:</strong> &ldquo;Fix the login bug&rdquo;</p>
+        <p><strong>Good:</strong> &ldquo;In <code>src/auth/validate.ts</code>, JWT validation fails when tokens contain special characters. Error on line 45.&rdquo;</p>
+        <ul>
+          <li><strong>Reference files explicitly</strong> &mdash; use @-mentions or paths</li>
+          <li><strong>Chunk large tasks</strong> &mdash; smaller, verifiable steps</li>
+          <li><strong>Fresh context</strong> &mdash; new session for unrelated tasks</li>
         </ul>
       </section>
 
       <!-- ══ Prompting Techniques ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Prompting Techniques</h2>
-        <div style="text-align: left; font-size: 0.85em;">
-          <p style="margin-bottom: 0.3em;"><span class="accent">1. Goal first, then constraints</span></p>
-          <pre><code>"Build a user registration form.
+        <p><strong>1. Goal first, then constraints</strong></p>
+        <pre><code>"Build a user registration form.
 Constraints: react-hook-form, zod validation,
 no external UI libraries."</code></pre>
-          <p style="margin: 0.6em 0 0.3em;"><span class="accent">2. Provide examples</span></p>
-          <pre><code>"Format output like: { id: string, name: string }"</code></pre>
-          <p style="margin: 0.6em 0 0.3em;"><span class="accent">3. Ask for explanation first</span></p>
-          <p style="margin: 0.6em 0 0;"><span class="accent">4. Iterate, don&rsquo;t restart</span></p>
-        </div>
+        <p><strong>2. Provide examples</strong></p>
+        <pre><code>"Format output like: { id: string, name: string }"</code></pre>
+        <p><strong>3. Ask for explanation first</strong></p>
+        <p><strong>4. Iterate, don&rsquo;t restart</strong></p>
       </section>
 
       <!-- ══ Project Configuration ══ -->
-      <section data-background-color="#09090b">
-        <h2>Project Configuration</h2>
-        <div class="two-columns" style="margin-top: 0.8em;">
-          <div>
-            <h3 style="font-size: 1.1em; margin-bottom: 0.5em;">.cursorrules</h3>
-            <pre><code style="font-size: 0.65em;">You are working on Next.js 14:
+      <section style="flex-direction: row; flex-wrap: wrap; gap: 0.5em; align-items: flex-start; justify-content: flex-start;">
+        <h2 style="width: 100%; flex-shrink: 0;">Project Configuration</h2>
+        <div style="flex: 1; min-width: 0;">
+          <h3 style="margin: 0 0 0.2em;">.cursorrules</h3>
+          <pre style="font-size: 0.52em; margin: 0;"><code>You are working on Next.js 14:
 - App Router (not Pages)
 - TypeScript strict mode
 - Tailwind CSS
@@ -660,10 +541,10 @@ Rules:
 - No 'use client' unless needed
 - Use named exports
 - Prefer Server Actions</code></pre>
-          </div>
-          <div>
-            <h3 style="font-size: 1.1em; margin-bottom: 0.5em;">CLAUDE.md</h3>
-            <pre><code style="font-size: 0.65em;"># Project: Dashboard
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <h3 style="margin: 0 0 0.2em;">CLAUDE.md</h3>
+          <pre style="font-size: 0.52em; margin: 0;"><code># Project: Dashboard
 
 ## Stack
 - Next.js 14, TypeScript
@@ -672,84 +553,57 @@ Rules:
 ## Don't
 - Don't use `any` type
 - Don't install deps without asking</code></pre>
-          </div>
         </div>
       </section>
 
       <!-- ══ MCP Brief ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>MCP &mdash; Model Context Protocol</h2>
-        <p class="small-text" style="margin-bottom: 0.8em;">Connect AI to external tools and data</p>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>Database Access</h4>
-            <p>Query Postgres directly</p>
-          </div>
-          <div class="feature-card">
-            <h4>Documentation</h4>
-            <p>Fetch from Notion, Confluence</p>
-          </div>
-          <div class="feature-card">
-            <h4>Design Tools</h4>
-            <p>Pull from Figma</p>
-          </div>
-          <div class="feature-card">
-            <h4>Custom Tools</h4>
-            <p>Internal APIs, services</p>
-          </div>
-        </div>
-        <p class="small-text" style="margin-top: 0.9em;">Keep it simple: most projects don&rsquo;t need MCP. Start without it.</p>
+        <p><small>Connect AI to external tools and data</small></p>
+        <ul>
+          <li><strong>Database Access</strong> &mdash; Query Postgres directly</li>
+          <li><strong>Documentation</strong> &mdash; Fetch from Notion, Confluence</li>
+          <li><strong>Design Tools</strong> &mdash; Pull from Figma</li>
+          <li><strong>Custom Tools</strong> &mdash; Internal APIs, services</li>
+        </ul>
+        <p><small>Keep it simple: most projects don&rsquo;t need MCP. Start without it.</small></p>
       </section>
 
       <!-- ══ Divider: Part 4 ══ -->
-      <section data-background-color="#09090b">
-        <p class="part-label">Part 4</p>
+      <section>
+        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 4</p>
         <h1>Open<br>Assignment</h1>
-        <p class="subtitle">45 minutes &mdash; your own project</p>
+        <p style="color: #64ffda;">45 minutes &mdash; your own project</p>
       </section>
 
       <!-- ══ Open Assignment ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Open Assignment</h2>
-        <p class="accent-muted" style="font-size: 0.82em; margin-bottom: 1em;">Work on your own project or idea</p>
-        <div style="text-align: left;">
-          <p style="color: var(--zinc-400); font-size: 0.8em; margin-bottom: 0.6em;">Ideas if stuck:</p>
-          <ul style="font-size: 0.8em;">
-            <li>Port a side project feature to a new framework</li>
-            <li>Build a tool that solves a daily annoyance</li>
-            <li>Recreate a simple app (Trello board, Pomodoro timer)</li>
-            <li>Prototype an idea you&rsquo;ve been thinking about</li>
-          </ul>
-        </div>
+        <p>Work on your own project or idea</p>
+        <p>Ideas if stuck:</p>
+        <ul>
+          <li>Port a side project feature to a new framework</li>
+          <li>Build a tool that solves a daily annoyance</li>
+          <li>Recreate a simple app (Trello board, Pomodoro timer)</li>
+          <li>Prototype an idea you&rsquo;ve been thinking about</li>
+        </ul>
       </section>
 
       <!-- ══ Tips for Success ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Tips for Success</h2>
-        <div class="step-list" style="margin-top: 0.8em;">
-          <div class="step-item">
-            <span class="step-num">1.</span>
-            <span class="step-text">Start with a clear, written goal</span>
-          </div>
-          <div class="step-item">
-            <span class="step-num">2.</span>
-            <span class="step-text">Use plan mode / Composer for scaffolding</span>
-          </div>
-          <div class="step-item">
-            <span class="step-num">3.</span>
-            <span class="step-text">Iterate in smaller chunks</span>
-          </div>
-          <div class="step-item">
-            <span class="step-num">4.</span>
-            <span class="step-text">Don&rsquo;t be afraid to restart context if stuck</span>
-          </div>
-        </div>
+        <ol>
+          <li>Start with a clear, written goal</li>
+          <li>Use plan mode / Composer for scaffolding</li>
+          <li>Iterate in smaller chunks</li>
+          <li>Don&rsquo;t be afraid to restart context if stuck</li>
+        </ol>
       </section>
 
       <!-- ══ Resources ══ -->
-      <section data-background-color="#09090b">
+      <section>
         <h2>Resources</h2>
-        <ul style="font-size: 0.85em; margin-top: 0.5em;">
+        <ul>
           <li><a href="https://docs.cursor.com">docs.cursor.com</a></li>
           <li><a href="https://docs.anthropic.com/docs">docs.anthropic.com/docs</a> &mdash; Claude Code</li>
           <li><a href="https://docs.anthropic.com/en/docs/claude-code/mcp">docs.anthropic.com &mdash; MCP Guide</a></li>
@@ -759,17 +613,17 @@ Rules:
       </section>
 
       <!-- ══ Thank You ══ -->
-      <section data-background-color="#09090b">
-        <div class="logo-text">Thank You!</div>
-        <p class="subtitle" style="margin-top: 0.6em;">Questions?</p>
-        <p class="small-text" style="margin-top: 2.5em; letter-spacing: 0.08em;">Cinq ICT &mdash; AI Developer Tools Workshop</p>
+      <section>
+        <h1>Thank You!</h1>
+        <p>Questions?</p>
+        <p><small>Cinq ICT &mdash; AI Developer Tools Workshop</small></p>
       </section>
 
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/plugin/highlight.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
@@ -779,10 +633,20 @@ Rules:
       backgroundTransition: 'none',
       width: 1080,
       height: 760,
-      margin: 0.08,
+      margin: 0.14,
       minScale: 0.1,
       maxScale: 2.0,
       plugins: [RevealHighlight]
+    }).then(function () {
+      function relayout() {
+        Reveal.layout();
+      }
+      window.addEventListener('resize', relayout);
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', relayout);
+      }
+    }).catch(function (err) {
+      console.error('Reveal.initialize failed:', err);
     });
   </script>
 </body>

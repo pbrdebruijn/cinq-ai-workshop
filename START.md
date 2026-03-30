@@ -2,13 +2,22 @@
 
 Get Claude Code and Cursor ready before the workshop.
 
+## Prerequisites
+
+This guide assumes **macOS**. Commands use `zsh`/`bash` and paths like `~/.zshrc`.
+
+- **Node.js (LTS)** — Required for `npm` and the global Claude Code install. Install from [nodejs.org](https://nodejs.org) (choose the LTS version) or via a version manager (e.g. `nvm`, `fnm`). Check with `node -v` and `npm -v`.
+- **A terminal** — Built-in **Terminal** (or **iTerm2**, **Warp**, etc.) to run the commands below.
+
+**Windows?** These steps are not written for Windows. Ask a colleague for help adapting paths, shells, and env vars, or use WSL if you are comfortable with it.
+
 ---
 
 ## Claude Code
 
 Claude Code is a terminal-based AI coding agent made by Anthropic. It can be used with either an Anthropic API key or a Claude.ai Pro/Max subscription.
 
-### Option A — API key (recommended for workshops)
+### API key
 
 **1. Create an Anthropic account**
 
@@ -45,18 +54,6 @@ claude "hello"
 
 ---
 
-### Option B — Claude.ai subscription
-
-If you already have a **Claude Pro** or **Claude Max** subscription, you can log in with your browser account instead of an API key:
-
-```bash
-claude
-```
-
-On first run, Claude Code will open a browser window to authenticate via claude.ai.
-
----
-
 ## Cursor
 
 > Payment and account setup details to be confirmed.
@@ -83,3 +80,4 @@ Once your tools are set up, install dependencies for the two workshop apps:
 cd assignment-a-dashboard-app && npm install && cd ..
 cd assignment-b-todo-app && npm install && cd ..
 ```
+
