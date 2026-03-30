@@ -1,0 +1,58 @@
+# Assignment A — Extend the Dashboard
+
+The dashboard app has 3 live widgets already built (GitHub Stars, System Status, Recent Activity). Your job is to implement the remaining empty slots using public APIs — no auth, no API keys needed for the core tasks.
+
+## Get started
+
+```bash
+cd assignment-a-dashboard-app
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+Study the existing widgets in `src/app/page.tsx` before you start — they're your pattern.
+
+---
+
+## Tasks
+
+### 1. Weather Overview card
+
+API: [Open-Meteo](https://open-meteo.com/) — no key required.
+
+Ask Claude to implement a Weather Overview card that shows current temperature and weather condition for a fixed location (e.g. Amsterdam). Tell it to look at the existing widgets for the data-fetching pattern to follow.
+
+> "Implement the Weather Overview card in src/app/page.tsx. Use the Open-Meteo API (no key needed). Follow the same server component pattern as the existing widgets."
+
+### 2. Crypto Markets card
+
+API: [CoinGecko public API](https://www.coingecko.com/en/api) — no key required.
+
+Show current price + 24h change for BTC, ETH, and SOL.
+
+> "Add a Crypto Markets card using the CoinGecko API. Show BTC, ETH, SOL with current price and 24h % change. Color the change green/red."
+
+### 3. News Headlines card
+
+API: [Hacker News Algolia API](https://hn.algolia.com/api) — no key required.
+
+Show the top 5 current HN stories with title and score.
+
+> "Add a News Headlines card showing the top 5 Hacker News stories from the Algolia HN API. Show title and score, link to the story."
+
+---
+
+## Tips
+
+- All widgets are **React Server Components** — they fetch data at render time. No `useEffect`, no `useState`.
+- If Claude tries to add `'use client'`, push back: *"Keep this as a server component."*
+- The Open-Meteo base URL is `https://api.open-meteo.com/v1/forecast`.
+- CoinGecko endpoint: `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true`
+
+---
+
+## Bonus
+
+- **Requests Table** — add a table below the widgets showing simulated recent API requests with timestamp, endpoint, and status code. Use static/mock data.
+- **Sparkline chart** — install `recharts` and add a mini price chart to the Crypto card showing the last 7 days. Ask Claude to use the CoinGecko `/market_chart` endpoint.

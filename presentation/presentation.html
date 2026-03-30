@@ -224,20 +224,20 @@
 
       <!-- ══ Quote 1 ══ -->
       <section>
-        <blockquote>&ldquo;What is an IDE?&rdquo;</blockquote>
-        <p>&mdash; and what should it be in 2026?</p>
+        <blockquote>&ldquo;Every company is now a software company.&rdquo;</blockquote>
+        <p>&mdash; which means every developer is now a product differentiator</p>
       </section>
 
       <!-- ══ Quote 2 ══ -->
       <section>
-        <blockquote>&ldquo;Real developers<br>read the docs.&rdquo;</blockquote>
-        <p>&mdash; or do they?</p>
+        <blockquote>&ldquo;The half-life of a technical skill<br>has never been shorter.&rdquo;</blockquote>
+        <p>&mdash; what got you here may not keep you here</p>
       </section>
 
       <!-- ══ Quote 3 ══ -->
       <section>
-        <blockquote>&ldquo;The best code is the code you don&rsquo;t have to write.&rdquo;</blockquote>
-        <p>&mdash; what if the bottleneck isn&rsquo;t typing anymore?</p>
+        <blockquote>&ldquo;AI coding is not a shortcut.<br>It&rsquo;s a tool to master &mdash;<br>and mastering it is how you stay relevant.&rdquo;</blockquote>
+        <p>&mdash; that&rsquo;s what today is about</p>
       </section>
 
       <!-- ══ Agenda ══ -->
@@ -245,10 +245,11 @@
         <h2>Agenda</h2>
         <ul>
           <li><strong>15 min</strong> &mdash; IDE Comparison: Cursor vs Claude Code</li>
-          <li><strong>45 min</strong> &mdash; Guided Assignment</li>
-          <li><strong>15 min</strong> &mdash; Best Practices &amp; Tips</li>
-          <li><strong>45 min</strong> &mdash; Open Assignment</li>
+          <li><strong>45 min</strong> &mdash; Guided Assignment &mdash; hands-on, struggle first</li>
+          <li><strong>15 min</strong> &mdash; Best Practices &amp; Tips &mdash; now they&rsquo;ll land</li>
+          <li><strong>45 min</strong> &mdash; Open Assignment &mdash; your own project</li>
         </ul>
+        <p><small>You&rsquo;ll leave able to: <strong>pick the right tool</strong>, write <strong>effective prompts</strong>, configure AI tools for your <strong>team</strong>, and apply AI assistance on <strong>real code</strong>.</small></p>
       </section>
 
       <!-- ══ Divider: Part 1 ══ -->
@@ -273,7 +274,7 @@
       <!-- ══ Cursor Recent Changes (see cursor.com/docs — plugins, cloud agent, Bugbot, agent modes) ══ -->
       <section class="slide-cursor-whatsnew">
         <h2>Cursor &mdash; What&rsquo;s New</h2>
-        <p><small>From the current docs: ecosystem around agents, then review &amp; diagnosis</small></p>
+        <p><small>From plugins and cloud agents to automated review &amp; debug</small></p>
 
         <svg class="cursor-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: mid-2025 Cursor 1.0, then plugins, cloud agents and Bugbot, then debug mode and MCP agent">
           <defs>
@@ -339,7 +340,7 @@
       <!-- ══ Claude Code Recent Changes (see code.claude.com/docs — overview, IDE, MCP, GitHub) ══ -->
       <section class="slide-claude-whatsnew">
         <h2>Claude Code &mdash; What&rsquo;s New</h2>
-        <p><small>From the current docs: terminal agent &rarr; editor &amp; safety &rarr; platform &rarr; integrations</small></p>
+        <p><small>From terminal agent to IDE integration, platform extensions &amp; ecosystem</small></p>
 
         <svg class="claude-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: GA CLI agent, IDE checkpoints and rewind, MCP skills hooks and sandbox, GitHub and Agent SDK">
           <defs>
@@ -419,14 +420,15 @@
             </tr>
           </tbody>
         </table>
-        <p><small>Both support <code>SKILL.md</code> for custom workflows. They work great together &mdash; Claude Code for big changes, Cursor for refinement.</small></p>
+        <p><small>Cursor uses <code>.cursorrules</code> &amp; plugins; Claude Code uses <code>CLAUDE.md</code> &amp; slash commands. They work great together &mdash; Claude Code for big changes, Cursor for refinement.</small></p>
       </section>
 
       <!-- ══ Divider: Part 2 ══ -->
       <section>
         <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 2</p>
         <h1>Guided<br>Assignment</h1>
-        <p style="color: #64ffda;">45 minutes hands-on</p>
+        <p style="color: #64ffda;">45 minutes &mdash; struggle first</p>
+        <p><small>Best practices come <em>after</em> &mdash; so the tips are grounded in problems you&rsquo;ve actually hit.</small></p>
       </section>
 
       <!-- ══ Assignment Options ══ -->
@@ -444,55 +446,47 @@
       <section>
         <h2>Option A &mdash; Extend the Dashboard</h2>
         <pre><code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code></pre>
+        <p>3 widgets built, 3 empty slots waiting. Implement them with public APIs &mdash; no keys needed.</p>
         <ul>
-          <li>3 live widgets already built &mdash; use them as patterns</li>
-          <li>Implement <strong>Weather</strong> card &mdash; Open-Meteo API (no key needed)</li>
-          <li>Implement <strong>Crypto Markets</strong> card &mdash; CoinGecko API (BTC, ETH, SOL)</li>
-          <li>Implement <strong>News Headlines</strong> card &mdash; Hacker News Algolia API</li>
-          <li>Optional: <strong>Requests Table</strong> or chart with <code>recharts</code></li>
-          <li>All server components, all public APIs, no auth required</li>
+          <li><strong>Weather</strong> &mdash; Open-Meteo API</li>
+          <li><strong>Crypto Markets</strong> &mdash; CoinGecko (BTC, ETH, SOL)</li>
+          <li><strong>News Headlines</strong> &mdash; Hacker News Algolia API</li>
         </ul>
+        <p><small>Full details: <code>assignments/a-dashboard/ASSIGNMENT.md</code></small></p>
       </section>
 
       <!-- ══ Assignment B ══ -->
       <section>
         <h2>Option B &mdash; Debug the Todo App</h2>
         <pre><code>cd assignment-b-todo-app &amp;&amp; npm run dev</code></pre>
+        <p>The app has <strong>3 intentional bugs</strong> in <code>src/app/page.tsx</code>. Use the app first, note what breaks, then bring the symptoms to Claude.</p>
         <ul>
-          <li>The app has <strong>3 intentional bugs</strong> hidden in <code>src/app/page.tsx</code></li>
-          <li>Use AI to explore the code, describe symptoms, and locate root causes</li>
-          <li>Fix each bug with AI assistance &mdash; verify behaviour after each fix</li>
-          <li>Bonus: add <code>localStorage</code> persistence so todos survive refresh</li>
-          <li>Bonus: add a &ldquo;Edit&rdquo; feature to rename a todo in-place</li>
+          <li>Describe symptoms &rarr; let AI locate root causes &rarr; fix one at a time</li>
         </ul>
+        <p><small>Full details: <code>assignments/b-todo-app/ASSIGNMENT.md</code></small></p>
       </section>
 
       <!-- ══ Assignment C ══ -->
       <section>
         <h2>Option C &mdash; MCP Power Tools</h2>
         <pre><code>claude mcp add context7 npx -- -y @upstash/context7-mcp</code></pre>
+        <p>Wire up 2&ndash;3 MCP servers and see how live context changes Claude&rsquo;s answers.</p>
         <ul>
-          <li>Configure <strong>2&ndash;3 MCP servers</strong> in Claude Code</li>
-          <li><strong>context7</strong> &mdash; ask Claude for up-to-date Next.js &amp; Tailwind docs</li>
-          <li><strong>GitHub MCP</strong> &mdash; browse issues, open PRs, summarise a repo</li>
-          <li>Compare answers with vs without MCP context</li>
-          <li>Use the live context to add a new widget to the dashboard app</li>
-          <li>Bonus: configure MCP in Cursor via <code>.cursor/mcp.json</code> and compare</li>
+          <li><strong>context7</strong> &mdash; live Next.js &amp; Tailwind docs</li>
+          <li><strong>GitHub MCP</strong> &mdash; browse issues, summarise repos</li>
         </ul>
+        <p><small>Full details: <code>assignments/c-mcp-power-tools/ASSIGNMENT.md</code></small></p>
       </section>
 
       <!-- ══ Assignment D ══ -->
       <section>
         <h2>Option D &mdash; UI Redesign with a Skill</h2>
-        <pre><code>~/.claude/commands/redesign.md</code></pre>
+        <pre><code>.claude/commands/redesign.md</code></pre>
+        <p>Write a <strong>/redesign</strong> slash command, run it on the todo app, then iterate the prompt and compare results.</p>
         <ul>
-          <li>Write a <strong>/redesign</strong> slash command that instructs Claude how to critique and improve any component's UI/UX</li>
-          <li>Run it on the todo app &mdash; dark theme, spacing, animations, accessibility</li>
-          <li>Iterate: refine the skill prompt, run again, compare results</li>
-          <li>Add a <code>CLAUDE.md</code> with your design tokens and conventions</li>
-          <li>Bonus: add a <strong>/component</strong> skill that scaffolds new styled components</li>
-          <li>Bonus: configure an equivalent <code>.cursor/rules</code> file for Cursor</li>
+          <li>Also write a <code>CLAUDE.md</code> with your design tokens</li>
         </ul>
+        <p><small>Full details: <code>assignments/d-ui-redesign-skill/ASSIGNMENT.md</code></small></p>
       </section>
 
       <!-- ══ Divider: Part 3 ══ -->
@@ -614,9 +608,10 @@ Rules:
 
       <!-- ══ Thank You ══ -->
       <section>
-        <h1>Thank You!</h1>
-        <p>Questions?</p>
-        <p><small>Cinq ICT &mdash; AI Developer Tools Workshop</small></p>
+        <h1>One thing to do<br>this week</h1>
+        <p>Add a <code>CLAUDE.md</code> (or <code>.cursorrules</code>) to a project you own.</p>
+        <p>Encode your stack, your conventions, your &ldquo;don&rsquo;ts&rdquo;.<br>Every session after that gets smarter for free.</p>
+        <p><small>Questions? &mdash; Cinq ICT &mdash; AI Developer Tools Workshop</small></p>
       </section>
 
     </div>
