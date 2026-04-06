@@ -27,7 +27,7 @@ Note the symptoms you observe. Write them down — you'll use this to prompt Cla
 
 ### 2. Use AI to locate root causes
 
-Open Claude Code in the `assignment-b-todo-app` folder. Describe the symptoms you found:
+Open Claude Code (or Cursor Chat with the project open) in the `assignment-b-todo-app` folder. Describe the symptoms you found:
 
 > "I'm seeing the following behaviour in src/app/page.tsx: [your observations]. Read the file and identify the likely root cause for each issue."
 

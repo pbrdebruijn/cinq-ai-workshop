@@ -196,19 +196,6 @@
       background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
     }
 
-    /* ── Timeline SVGs ── */
-    .slide-cursor-whatsnew .cursor-timeline-svg,
-    .slide-claude-whatsnew .claude-timeline-svg {
-      width: 100%;
-      max-height: 9.5em;
-      margin: 0.25em 0 0.45em;
-      flex-shrink: 0;
-    }
-
-    .slide-cursor-whatsnew .cursor-timeline-svg text,
-    .slide-claude-whatsnew .claude-timeline-svg text {
-      font-family: var(--r-main-font, sans-serif);
-    }
   </style>
 </head>
 <body>
@@ -244,183 +231,114 @@
       <section>
         <h2>Agenda</h2>
         <ul>
-          <li><strong>15 min</strong> &mdash; IDE Comparison: Cursor vs Claude Code</li>
+          <li><strong>15 min</strong> &mdash; Principles &amp; workflow &mdash; habits, agentic coding, Cursor vs CLI</li>
           <li><strong>45 min</strong> &mdash; Guided Assignment &mdash; hands-on, struggle first</li>
           <li><strong>15 min</strong> &mdash; Best Practices &amp; Tips &mdash; now they&rsquo;ll land</li>
           <li><strong>45 min</strong> &mdash; Open Assignment &mdash; your own project</li>
         </ul>
-        <p><small>You&rsquo;ll leave able to: <strong>pick the right tool</strong>, write <strong>effective prompts</strong>, configure AI tools for your <strong>team</strong>, and apply AI assistance on <strong>real code</strong>.</small></p>
+        <p><small>You&rsquo;ll leave able to: match <strong>workflow to the task</strong>, write <strong>effective prompts</strong>, configure AI tools for your <strong>team</strong>, and apply AI assistance on <strong>real code</strong>.</small></p>
       </section>
 
       <!-- ══ Divider: Part 1 ══ -->
       <section>
         <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 1</p>
-        <h1>IDE Comparison</h1>
-        <p style="color: #64ffda;">Cursor vs Claude Code</p>
+        <h1>Principles &amp;<br>workflow</h1>
+        <p style="color: #64ffda;">Habits that outlive the changelog &mdash; then two tool shapes</p>
       </section>
 
-      <!-- ══ Cursor Overview ══ -->
+      <!-- ══ Durable principles ══ -->
+      <section>
+        <h2>Durable principles</h2>
+        <p><small>These apply to autocomplete, chat, and full agents alike</small></p>
+        <ul>
+          <li><strong>Context is the product</strong> &mdash; files, errors, constraints beat &ldquo;fix my app&rdquo;</li>
+          <li><strong>Verify, don&rsquo;t trust</strong> &mdash; tests, diffs, reproduction before big merges</li>
+          <li><strong>Bound the work</strong> &mdash; small steps, clear done; fresh session for unrelated tasks</li>
+          <li><strong>Encode once</strong> &mdash; repo rules beat repeating the same lecture in chat</li>
+        </ul>
+      </section>
+
+      <!-- ══ Agentic coding: trust & guardrails ══ -->
+      <section>
+        <h2>Agentic coding</h2>
+        <p><strong>More delegation</strong> &mdash; plans, multi-file edits, shell commands &mdash; more upside <em>and</em> more risk.</p>
+        <ul>
+          <li><strong>Calibrate trust</strong> &mdash; explain-first or narrow scope first; widen as <code>CLAUDE.md</code> / rules mature</li>
+          <li><strong>Guardrails stack</strong> &mdash; project instructions, review before merge, undo/checkpoints, sandbox or allowlists where you have them</li>
+          <li><strong>MCP &amp; integrations</strong> &mdash; only with org approval; same hygiene as any production access</li>
+          <li><strong>You own secrets and prod</strong> &mdash; automation assists; responsibility stays human</li>
+        </ul>
+        <p><small>PR review bots, debug-with-evidence, bounded bash &mdash; same theme: <strong>evidence + boundaries</strong>, not autopilot.</small></p>
+      </section>
+
+      <!-- ══ Tools move fast (landscape) ══ -->
+      <section>
+        <h2>Tools move fast</h2>
+        <p>Both <strong>Cursor</strong> and <strong>Claude Code</strong> ship constantly &mdash; this deck is a snapshot. <strong>Official docs</strong> are the real changelog.</p>
+        <ul style="font-size: 0.85em;">
+          <li>Bookmark <a href="https://docs.cursor.com">docs.cursor.com</a> and <a href="https://docs.anthropic.com/docs">Claude / Claude Code docs</a> for follow-up</li>
+          <li>Examples of the principles above (not a shopping list): plugins bundling rules &amp; MCP; automated PR review; gathering runtime evidence before patching; checkpoints / rewind</li>
+        </ul>
+        <p><small>Skip quarterly timeline slides &mdash; use release notes when you need &ldquo;what&rsquo;s new.&rdquo;</small></p>
+      </section>
+
+      <!-- ══ Cursor: in-editor workflow ══ -->
       <section>
         <h2>Cursor</h2>
-        <p>VS Code fork with AI deeply integrated</p>
+        <p><strong>In-editor, diff-forward</strong> &mdash; VS Code lineage; AI next to the code you see.</p>
         <ul>
-          <li><strong>Tab Completion</strong> &mdash; Autocomplete on steroids, predicts multi-line changes</li>
-          <li><strong>Cmd+K</strong> &mdash; Inline editing with natural language</li>
-          <li><strong>Composer</strong> &mdash; Multi-file changes in one go</li>
-          <li><strong>Chat Panel</strong> &mdash; Codebase-aware with @-mentions</li>
+          <li><strong>Tab</strong> &mdash; multi-line completion</li>
+          <li><strong>Cmd+K</strong> &mdash; inline edit with natural language</li>
+          <li><strong>Composer</strong> &mdash; multi-file changes with visible context</li>
+          <li><strong>Chat + <code>@</code></strong> &mdash; codebase-aware; pull files &amp; symbols into the thread</li>
         </ul>
+        <p><small>Reach for it when you want a <strong>tight loop</strong> and to <strong>read every diff</strong> in the editor.</small></p>
       </section>
 
-      <!-- ══ Cursor Recent Changes (see cursor.com/docs — plugins, cloud agent, Bugbot, agent modes) ══ -->
-      <section class="slide-cursor-whatsnew">
-        <h2>Cursor &mdash; What&rsquo;s New</h2>
-        <p><small>From plugins and cloud agents to automated review &amp; debug</small></p>
-
-        <svg class="cursor-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: mid-2025 Cursor 1.0, then plugins, cloud agents and Bugbot, then debug mode and MCP agent">
-          <defs>
-            <linearGradient id="cursor-tl-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.3"/>
-              <stop offset="50%" style="stop-color:#b388ff;stop-opacity:0.8"/>
-              <stop offset="100%" style="stop-color:#ff4081;stop-opacity:1"/>
-            </linearGradient>
-            <filter id="cursor-tl-glow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="3" result="b"/>
-              <feMerge>
-                <feMergeNode in="b"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <line x1="72" y1="78" x2="848" y2="78" stroke="url(#cursor-tl-line)" stroke-width="4" stroke-linecap="round"/>
-
-          <g filter="url(#cursor-tl-glow)">
-            <circle cx="160" cy="78" r="10" fill="#00e5ff"/>
-            <circle cx="360" cy="78" r="10" fill="#b388ff"/>
-            <circle cx="560" cy="78" r="10" fill="#ffca28"/>
-            <circle cx="760" cy="78" r="12" fill="#ff4081"/>
-          </g>
-          <circle cx="160" cy="78" r="5" fill="#111"/>
-          <circle cx="360" cy="78" r="5" fill="#111"/>
-          <circle cx="560" cy="78" r="5" fill="#111"/>
-          <circle cx="760" cy="78" r="6" fill="#111"/>
-
-          <text x="160" y="38" text-anchor="middle" fill="#00e5ff" font-size="15" font-weight="700">Mid-2025</text>
-          <text x="360" y="38" text-anchor="middle" fill="#b388ff" font-size="15" font-weight="700">Plugins</text>
-          <text x="560" y="38" text-anchor="middle" fill="#ffca28" font-size="15" font-weight="700">Cloud + Bugbot</text>
-          <text x="760" y="38" text-anchor="middle" fill="#ff4081" font-size="15" font-weight="700">Agent modes</text>
-
-          <text x="160" y="118" text-anchor="middle" fill="#fff" font-size="14">1.0 launch</text>
-          <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="13">Skills, MCP, hooks</text>
-          <text x="360" y="130" text-anchor="middle" fill="#aaa" font-size="11">bundled in plugins</text>
-          <text x="560" y="112" text-anchor="middle" fill="#fff" font-size="13">Background agents</text>
-          <text x="560" y="130" text-anchor="middle" fill="#aaa" font-size="11">PR review (Bugbot)</text>
-          <text x="760" y="112" text-anchor="middle" fill="#fff" font-size="13">Debug mode</text>
-          <text x="760" y="130" text-anchor="middle" fill="#aaa" font-size="11">logs &amp; MCP agent CLI</text>
-        </svg>
-
-        <ul style="font-size: 0.72em; margin-bottom: 0;">
-          <li><strong>Plugins</strong> ship rules, skills, agents, commands, MCP servers &amp; hooks together.</li>
-          <li><strong>Bugbot</strong> reviews GitHub PRs; <strong>Debug</strong> mode gathers runtime evidence before fixing.</li>
-        </ul>
-      </section>
-
-      <!-- ══ Claude Code Overview ══ -->
+      <!-- ══ Claude Code: terminal-agent workflow ══ -->
       <section>
         <h2>Claude Code</h2>
-        <p>Terminal-based agentic coding assistant</p>
+        <p><strong>Terminal-first agent</strong> &mdash; editor-agnostic; drive the repo from a pane.</p>
         <ul>
-          <li><strong>Editor Agnostic</strong> &mdash; Works alongside any editor you prefer</li>
-          <li><strong>Autonomous</strong> &mdash; File editing + command execution</li>
-          <li><strong>Deep Exploration</strong> &mdash; Understands entire codebase context</li>
-          <li><strong>Git Integration</strong> &mdash; Commits, PRs, branches built-in</li>
+          <li><strong>Autonomy</strong> &mdash; file edits + shell commands in one flow</li>
+          <li><strong>Exploration</strong> &mdash; multi-step tasks across the tree</li>
+          <li><strong>Git-native</strong> &mdash; commits, branches, PRs as first-class</li>
+          <li><strong>Repeatability</strong> &mdash; <code>CLAUDE.md</code>, slash commands, skills</li>
         </ul>
-      </section>
-
-      <!-- ══ Claude Code Recent Changes (see code.claude.com/docs — overview, IDE, MCP, GitHub) ══ -->
-      <section class="slide-claude-whatsnew">
-        <h2>Claude Code &mdash; What&rsquo;s New</h2>
-        <p><small>From terminal agent to IDE integration, platform extensions &amp; ecosystem</small></p>
-
-        <svg class="claude-timeline-svg" viewBox="0 0 920 168" role="img" aria-label="Timeline: GA CLI agent, IDE checkpoints and rewind, MCP skills hooks and sandbox, GitHub and Agent SDK">
-          <defs>
-            <linearGradient id="claude-tl-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#64ffda;stop-opacity:0.3"/>
-              <stop offset="50%" style="stop-color:#00e5ff;stop-opacity:0.8"/>
-              <stop offset="100%" style="stop-color:#b388ff;stop-opacity:1"/>
-            </linearGradient>
-            <filter id="claude-tl-glow" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="3" result="b"/>
-              <feMerge>
-                <feMergeNode in="b"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <line x1="72" y1="78" x2="848" y2="78" stroke="url(#claude-tl-line)" stroke-width="4" stroke-linecap="round"/>
-
-          <g filter="url(#claude-tl-glow)">
-            <circle cx="160" cy="78" r="10" fill="#64ffda"/>
-            <circle cx="360" cy="78" r="10" fill="#00e5ff"/>
-            <circle cx="560" cy="78" r="10" fill="#ffca28"/>
-            <circle cx="760" cy="78" r="12" fill="#b388ff"/>
-          </g>
-          <circle cx="160" cy="78" r="5" fill="#111"/>
-          <circle cx="360" cy="78" r="5" fill="#111"/>
-          <circle cx="560" cy="78" r="5" fill="#111"/>
-          <circle cx="760" cy="78" r="6" fill="#111"/>
-
-          <text x="160" y="38" text-anchor="middle" fill="#64ffda" font-size="15" font-weight="700">GA era</text>
-          <text x="360" y="38" text-anchor="middle" fill="#00e5ff" font-size="15" font-weight="700">IDE</text>
-          <text x="560" y="38" text-anchor="middle" fill="#ffca28" font-size="15" font-weight="700">Platform</text>
-          <text x="760" y="38" text-anchor="middle" fill="#b388ff" font-size="15" font-weight="700">Ecosystem</text>
-
-          <text x="160" y="118" text-anchor="middle" fill="#fff" font-size="14">CLI agent</text>
-          <text x="360" y="112" text-anchor="middle" fill="#fff" font-size="13">Checkpoints</text>
-          <text x="360" y="130" text-anchor="middle" fill="#aaa" font-size="11">rewind &amp; fork</text>
-          <text x="560" y="112" text-anchor="middle" fill="#fff" font-size="13">MCP &amp; skills</text>
-          <text x="560" y="130" text-anchor="middle" fill="#aaa" font-size="11">hooks, plugins, sandbox</text>
-          <text x="760" y="112" text-anchor="middle" fill="#fff" font-size="13">GitHub + SDK</text>
-          <text x="760" y="130" text-anchor="middle" fill="#aaa" font-size="11">@claude, Agent SDK</text>
-        </svg>
-
-        <ul style="font-size: 0.72em; margin-bottom: 0;">
-          <li><strong>VS Code / Cursor extension</strong> &mdash; inline diffs, @-mentions, plan review, checkpoint rewind.</li>
-          <li><strong>MCP</strong> connects tools; <strong>hooks</strong> automate around tool use; <strong>sandbox</strong> bounds bash.</li>
-        </ul>
+        <p><small>Reach for it for <strong>repo-wide</strong> or <strong>scripted</strong> work; optional IDE extension for inline diffs where you use it.</small></p>
       </section>
 
       <!-- ══ Comparison Table ══ -->
       <section>
-        <h2>When to Use Which?</h2>
+        <h2>When to use which?</h2>
+        <p><small>Scenarios, not absolutes &mdash; same developer, different tasks</small></p>
         <table>
           <thead>
             <tr>
-              <th>Cursor</th>
-              <th>Claude Code</th>
+              <th>Cursor (in-editor)</th>
+              <th>Claude Code (CLI agent)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Quick edits, autocomplete</td>
-              <td>Large refactors, greenfield projects</td>
+              <td>Tight edits, Tab, small surfaces</td>
+              <td>Large refactors, scaffolding, many files</td>
             </tr>
             <tr>
-              <td>Visual diff review preferred</td>
-              <td>Comfortable with terminal</td>
+              <td>You want the <strong>diff in the IDE</strong></td>
+              <td>You live in the <strong>terminal</strong> or want one agent pane</td>
             </tr>
             <tr>
-              <td>Tight editor integration</td>
-              <td>Complex multi-step tasks</td>
+              <td>Autocomplete + chat beside the file</td>
+              <td>Multi-step plans, commands, git operations</td>
             </tr>
             <tr>
-              <td>Smaller, focused changes</td>
-              <td>Full-stack scaffolding</td>
+              <td>Polish after a big change</td>
+              <td>Big moves, then hand off to the editor</td>
             </tr>
           </tbody>
         </table>
-        <p><small>Cursor uses <code>.cursorrules</code> &amp; plugins; Claude Code uses <code>CLAUDE.md</code> &amp; slash commands. They work great together &mdash; Claude Code for big changes, Cursor for refinement.</small></p>
+        <p><small><code>.cursorrules</code> &amp; plugins (Cursor) &middot; <code>CLAUDE.md</code> &amp; slash commands (Claude Code). <strong>They complement</strong> &mdash; e.g. agent for bulk work, Cursor for refinement.</small></p>
       </section>
 
       <!-- ══ Divider: Part 2 ══ -->
@@ -523,7 +441,8 @@ no external UI libraries."</code></pre>
 
       <!-- ══ Project Configuration ══ -->
       <section style="flex-direction: row; flex-wrap: wrap; gap: 0.5em; align-items: flex-start; justify-content: flex-start;">
-        <h2 style="width: 100%; flex-shrink: 0;">Project Configuration</h2>
+        <h2 style="width: 100%; flex-shrink: 0;">Project configuration</h2>
+        <p style="width: 100%; margin: 0 0 0.35em; font-size: 0.75em;">Versionable <strong>team guardrails</strong> &mdash; not personal superstitions</p>
         <div style="flex: 1; min-width: 0;">
           <h3 style="margin: 0 0 0.2em;">.cursorrules</h3>
           <pre style="font-size: 0.52em; margin: 0;"><code>You are working on Next.js 14:
@@ -585,12 +504,12 @@ Rules:
 
       <!-- ══ Tips for Success ══ -->
       <section>
-        <h2>Tips for Success</h2>
+        <h2>Tips for success</h2>
         <ol>
           <li>Start with a clear, written goal</li>
-          <li>Use plan mode / Composer for scaffolding</li>
-          <li>Iterate in smaller chunks</li>
-          <li>Don&rsquo;t be afraid to restart context if stuck</li>
+          <li>Use plan mode / Composer / agent for scaffolding &mdash; then <strong>verify</strong></li>
+          <li>Iterate in smaller chunks; pairing helps (one prompts, one reads diffs)</li>
+          <li>Restart context if stuck &mdash; long threads accumulate noise</li>
         </ol>
       </section>
 

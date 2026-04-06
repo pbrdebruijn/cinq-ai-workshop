@@ -13,6 +13,14 @@ npm run dev
 
 Study the existing widgets in `src/app/page.tsx` before you start — they're your pattern.
 
+### Workshop fit (why this is before “best practices”)
+
+This track is heavy on **integration and constraints** (server components, API shapes, pushing back on bad suggestions). You may still hit **wrong files**, **hallucinated endpoints**, or **over-eager `'use client'`** — that friction is what Part 3’s **context** and **prompting** slides refer to.
+
+The sample prompts below are **already specific** on purpose: notice they name the **file**, the **API**, and the **pattern** to copy. If you only copy-paste them, pay attention to *that shape* — Part 3 unpacks why it beats vague asks like “add a weather widget.”
+
+**Optional struggle (5 min):** For *one* widget only, try a deliberately vague prompt first (e.g. “add weather”), see what goes wrong, then retry using the structured prompt in this doc — you’ll feel the same ideas before they’re named.
+
 ---
 
 ## Tasks

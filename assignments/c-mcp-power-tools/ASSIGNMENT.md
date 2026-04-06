@@ -57,6 +57,7 @@ Open `assignment-a-dashboard-app` in Claude Code. Pick one of the remaining empt
 
 ## Tips
 
+- **After the workshop:** Part 3 of the deck argues that **most projects don’t need MCP on day one** — you’re seeing the **upside** here first; the talk is the **sober “when is it worth it?”** follow-on. Both are true.
 - Each `claude mcp add` command persists globally — you only need to run it once.
 - If a tool call is denied, check `claude mcp list` to confirm the server name matches.
 - `context7` works best with library-specific questions ("how do I do X in Next.js 15") rather than general ones.

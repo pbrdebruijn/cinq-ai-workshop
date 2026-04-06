@@ -19,25 +19,15 @@ Claude Code is a terminal-based AI coding agent made by Anthropic. It can be use
 
 ### API key
 
-**1. Create an Anthropic account**
+**1. Ask Bouke 😊**
 
-Go to [console.anthropic.com](https://console.anthropic.com) and sign up.
-
-**2. Add credits**
-
-Navigate to **Billing** and add a payment method. For the workshop, $5–10 is more than enough.
-
-**3. Create an API key**
-
-Go to **API Keys → Create Key**. Copy it — you won't see it again.
-
-**4. Install Claude Code**
+**2. Install Claude Code**
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-**5. Set your API key**
+**3. Set your API key**
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
@@ -45,7 +35,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 To persist it across sessions, add the line above to your `~/.zshrc` or `~/.bashrc`.
 
-**6. Verify**
+**4. Verify**
 
 ```bash
 claude --version
@@ -81,3 +71,31 @@ cd assignment-a-dashboard-app && npm install && cd ..
 cd assignment-b-todo-app && npm install && cd ..
 ```
 
+---
+
+## Assignments (guided hands-on)
+
+Pick **one** track for the guided block. Full briefs live here:
+
+
+| Track | Topic                                          | Brief                                                                                            |
+| ----- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **A** | Extend the dashboard (APIs, server components) | `[assignments/a-dashboard/ASSIGNMENT.md](assignments/a-dashboard/ASSIGNMENT.md)`                 |
+| **B** | Debug the todo app (symptoms → AI → fix)       | `[assignments/b-todo-app/ASSIGNMENT.md](assignments/b-todo-app/ASSIGNMENT.md)`                   |
+| **C** | MCP (Context7, GitHub, optional)               | `[assignments/c-mcp-power-tools/ASSIGNMENT.md](assignments/c-mcp-power-tools/ASSIGNMENT.md)`     |
+| **D** | `CLAUDE.md` + `/redesign` skill                | `[assignments/d-ui-redesign-skill/ASSIGNMENT.md](assignments/d-ui-redesign-skill/ASSIGNMENT.md)` |
+
+
+App roots (from the briefs): `assignment-a-dashboard-app`, `assignment-b-todo-app`.
+
+---
+
+## Open assignment (Part 4)
+
+After the **best-practices** segment, you apply the same workflow to **your own project** (or a sandbox repo)—not a separate repo brief.
+
+- **Flow:** clear goal → short plan → small steps → run tests / check the app → repeat.
+- **Ideas, tips, and resources** are on the slides: **Part 4 — Open assignment** in [`presentation/presentation.html`](presentation/presentation.html) (open-assignment slide, tips, resources).
+- **Paul’s outline:** session structure and speaker notes for this block are in [`PRESENTATION_OUTLINE.md`](PRESENTATION_OUTLINE.md) under Part 4 and slides 24–28.
+
+Bring a **small, real task** if you can (one bugfix, one feature slice, one refactor)—large scopes rarely fit the timebox.

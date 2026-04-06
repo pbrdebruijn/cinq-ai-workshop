@@ -1,5 +1,6 @@
 .DS_Store
 .obsidian/
+.playwright-mcp/
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
