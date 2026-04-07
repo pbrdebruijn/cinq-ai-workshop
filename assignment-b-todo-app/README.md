@@ -30,5 +30,3 @@ Features: add todos, toggle completion, filter (All / Active / Completed), delet
 ## Assignment
 
 Full brief (tasks, bonus): [`assignments/b-todo-app/ASSIGNMENT.md`](../assignments/b-todo-app/ASSIGNMENT.md) — assignment docs live only under `assignments/`, not in this app folder.
-
-> **Bug spoilers (Paul / workshop lead):** [BUGS.md](./BUGS.md) — don’t share with participants during the exercise.
