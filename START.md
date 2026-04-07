@@ -99,3 +99,19 @@ After the **best-practices** segment, you apply the same workflow to **your own 
 - **Paul’s outline:** session structure and speaker notes for this block are in [`PRESENTATION_OUTLINE.md`](PRESENTATION_OUTLINE.md) under Part 4 and slides 24–28.
 
 Bring a **small, real task** if you can (one bugfix, one feature slice, one refactor)—large scopes rarely fit the timebox.
+
+---
+
+## Spoilers / reference solutions (optional)
+
+To keep `main` participant-safe, spoilers and reference implementations live on a separate branch:
+
+```bash
+git switch workshop-solutions
+```
+
+To return to the normal workshop state:
+
+```bash
+git switch main
+```

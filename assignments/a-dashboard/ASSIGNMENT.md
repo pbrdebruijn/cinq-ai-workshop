@@ -13,6 +13,18 @@ npm run dev
 
 Study the existing widgets in `src/app/page.tsx` before you start — they're your pattern.
 
+---
+
+## If you want a reference solution
+
+If you want to compare your implementation against a working version, check out the solutions branch:
+
+```bash
+git switch workshop-solutions
+open assignment-a-dashboard-app/src/app/page.tsx
+git switch main
+```
+
 ### Workshop fit (why this is before “best practices”)
 
 This track is heavy on **integration and constraints** (server components, API shapes, pushing back on bad suggestions). You may still hit **wrong files**, **hallucinated endpoints**, or **over-eager `'use client'`** — that friction is what Part 3’s **context** and **prompting** slides refer to.

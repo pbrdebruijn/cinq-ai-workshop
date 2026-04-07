@@ -13,6 +13,26 @@ npm run dev
 
 ---
 
+## If you want spoilers or a reference solution
+
+This repo ships **participant-safe** by default. The bug hints and a fixed implementation live on a separate branch.
+
+```bash
+# From the repo root
+git switch workshop-solutions
+
+# Bug hints (Paul / workshop lead)
+open assignment-b-todo-app/BUGS.md
+
+# Fixed version is in the app itself (same file participants edit):
+open assignment-b-todo-app/src/app/page.tsx
+
+# Return to the normal workshop state
+git switch main
+```
+
+---
+
 ## Tasks
 
 ### 1. Discover the bugs

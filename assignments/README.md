@@ -10,3 +10,21 @@ All assignment **briefs** live in this directory only (`*/ASSIGNMENT.md`). The r
 | D | [d-ui-redesign-skill/ASSIGNMENT.md](d-ui-redesign-skill/ASSIGNMENT.md) | `assignment-b-todo-app` |
 
 See also [`START.md`](../START.md) and [`PRESENTATION_OUTLINE.md`](../PRESENTATION_OUTLINE.md).
+
+## Spoilers / solutions branch
+
+To keep `main` participant-safe, spoilers and reference implementations live on:
+
+- `workshop-solutions`
+
+To view:
+
+```bash
+git switch workshop-solutions
+```
+
+Return to the normal workshop state:
+
+```bash
+git switch main
+```
