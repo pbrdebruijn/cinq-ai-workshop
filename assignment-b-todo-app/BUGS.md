@@ -3,7 +3,7 @@
 This Next.js todo app is designed for an AI-assisted debugging exercise.  
 The app **builds successfully**, but contains several **runtime / logic bugs** you can hunt with an AI coding IDE or agent.
 
-Below are the planted bugs, their symptoms, and hints. Keep this file for facilitators only (don’t show to participants).
+Below are the planted bugs, their symptoms, and hints. For Paul / workshop lead only — don’t show to participants during the exercise.
 
 ---
 

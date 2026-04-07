@@ -37,4 +37,4 @@ Empty slots to implement:
 
 ## Assignment
 
-See [ASSIGNMENT.md](./ASSIGNMENT.md) for tasks, API details, and bonus challenges.
+Full brief (tasks, prompts, bonus): [`assignments/a-dashboard/ASSIGNMENT.md`](../assignments/a-dashboard/ASSIGNMENT.md) — assignment docs live only under `assignments/`, not in this app folder.

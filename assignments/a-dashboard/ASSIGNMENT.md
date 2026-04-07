@@ -1,6 +1,6 @@
 # Assignment A — Extend the Dashboard
 
-The dashboard app has 3 live widgets already built (GitHub Stars, System Status, Recent Activity). Your job is to implement the remaining empty slots using public APIs — no auth, no API keys needed for the core tasks.
+The dashboard app has 3 live widgets already built (**Next.js GitHub Stars**, **Random Cat Fact**, **Bitcoin Price**) — see `src/app/page.tsx` for the component names. Your job is to implement the **three empty cards** (Weather, Crypto, News) using public APIs — no auth, no API keys needed for the core tasks.
 
 ## Get started
 
@@ -53,8 +53,10 @@ Show the top 5 current HN stories with title and score.
 
 ## Tips
 
-- All widgets are **React Server Components** — they fetch data at render time. No `useEffect`, no `useState`.
-- If Claude tries to add `'use client'`, push back: *"Keep this as a server component."*
+- Copy the structure of the existing widgets (`GitHubStarsWidget`, `CatFactWidget`, `BitcoinPriceWidget`) — async server components with sensible error handling.
+- All new widgets should stay **React Server Components** — fetch at render time; no `useEffect` / `useState` unless you deliberately choose a client-only approach (you shouldn’t need to).
+- If the AI tries to add `'use client'`, push back: *"Keep this as a server component."*
+- Wrap `fetch` in `try/catch` so a failed API doesn’t break the whole page; optional: `next: { revalidate: 60 }` on fetches to cache for 60s.
 - The Open-Meteo base URL is `https://api.open-meteo.com/v1/forecast`.
 - CoinGecko endpoint: `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true`
 
