@@ -9,7 +9,7 @@ All assignment **briefs** live in this directory only (`*/ASSIGNMENT.md`). The r
 | C | [c-mcp-power-tools/ASSIGNMENT.md](c-mcp-power-tools/ASSIGNMENT.md) | Claude Code + MCP; may use dashboard app for task 4 |
 | D | [d-ui-redesign-skill/ASSIGNMENT.md](d-ui-redesign-skill/ASSIGNMENT.md) | `assignment-b-todo-app` |
 
-See also [`START.md`](../START.md) and [`PRESENTATION_OUTLINE.md`](../PRESENTATION_OUTLINE.md).
+See also [`README.md`](../README.md) and [`PRESENTATION_OUTLINE.md`](../PRESENTATION_OUTLINE.md).
 
 ## Spoilers / solutions branch
 
