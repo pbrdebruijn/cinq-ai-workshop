@@ -6,7 +6,6 @@ MCP (Model Context Protocol) servers give Claude access to external tools — li
 
 - Claude Code installed and working (`claude --version`)
 - Node.js 18+ (for running MCP servers via `npx`)
-- A GitHub Personal Access Token with `repo` and `read:org` scopes (for Task 3 — skip if you don't have one)
 
 ---
 
@@ -37,17 +36,7 @@ Note the answer. Close the session.
 
 Compare: is the answer more accurate? Does it cite a specific doc page?
 
-### 3. Add the GitHub MCP server *(skip if no PAT)*
-
-```bash
-export GITHUB_PERSONAL_ACCESS_TOKEN=<your-pat>
-claude mcp add github npx -- -y @modelcontextprotocol/server-github
-```
-
-Ask Claude:
-> "List the 5 most recently updated open issues on vercel/next.js and give me a one-line summary of each."
-
-### 4. Use MCP to implement a dashboard widget
+### 3. Use MCP to implement a dashboard widget
 
 Open `assignment-a-dashboard-app` in Claude Code. Pick one of the remaining empty widget slots and ask Claude to implement it, but this time tell it to use context7 to look up the correct API first:
 
@@ -57,10 +46,12 @@ Open `assignment-a-dashboard-app` in Claude Code. Pick one of the remaining empt
 
 ## Tips
 
-- **After the workshop:** Part 3 of the deck argues that **most projects don’t need MCP on day one** — you’re seeing the **upside** here first; the talk is the **sober “when is it worth it?”** follow-on. Both are true.
+- **After the workshop:** Part 3 of the deck argues that **most projects don't need MCP on day one** — you're seeing the **upside** here first; the talk is the **sober "when is it worth it?"** follow-on. Both are true.
 - Each `claude mcp add` command persists globally — you only need to run it once.
 - If a tool call is denied, check `claude mcp list` to confirm the server name matches.
 - `context7` works best with library-specific questions ("how do I do X in Next.js 15") rather than general ones.
+
+**Choose your own MCP adventure:** You don't have to stick with GitHub. Pick an MCP server that interests you — filesystem access, database tools, custom APIs, or anything from the [Model Context Protocol registry](https://modelcontextprotocol.io/servers). Run `claude mcp add <server-name> npx -- -y <package-name>`. The prompt and test remain the same: just see how Claude's capabilities change.
 
 ---
 

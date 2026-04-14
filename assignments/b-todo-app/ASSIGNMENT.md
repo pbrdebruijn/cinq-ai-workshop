@@ -61,6 +61,8 @@ Fix one bug at a time. After each fix, verify the behaviour in the browser befor
 
 This pattern — one fix, verify, next — prevents Claude from cascading one bad fix into another.
 
+**Troubleshooting:** If Claude can't locate a bug after 20 minutes of reading and investigation, shout and ask a hint. The bugs are intentional but some are subtle.
+
 ---
 
 ## Tips

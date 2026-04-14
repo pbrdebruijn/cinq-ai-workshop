@@ -17,6 +17,8 @@ This guide assumes **macOS**. Commands use `zsh`/`bash` and paths like `~/.zshrc
 
 Claude Code is a terminal-based AI coding agent made by Anthropic. It can be used with either an Anthropic API key or a Claude.ai Pro/Max subscription.
 
+**Before you start:** Close all terminal windows and open a fresh one. Claude Code commands won't work if you're in an existing session that's already configured for another project.
+
 ### API key
 
 **1. Ask Bouke 😊**
@@ -35,12 +37,16 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 To persist it across sessions, add the line above to your `~/.zshrc` or `~/.bashrc`.
 
+**⚠️ Security note:** Don't commit your `.zshrc` file to Git. The `export` line should stay local to your machine.
+
 **4. Verify**
 
 ```bash
 claude --version
 claude "hello"
 ```
+
+Check if you can interact with Claude in a new session: close all terminals, open a fresh one, and try the two commands above. If they work, you're ready for the workshop.
 
 ---
 
@@ -77,12 +83,14 @@ cd assignment-b-todo-app && npm install && cd ..
 
 Pick **one** track for the guided block. Full briefs live here:
 
+**Getting started tip:** Before diving in, take 5 minutes to preview the app. Run `npm run dev` and just browse - you'll see what's already working, what's new, and how the code is structured. This helps you understand the patterns before asking Claude to make changes.
+
 
 | Track | Topic                                          | Brief                                                                                            |
 | ----- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | **A** | Extend the dashboard (APIs, server components) | `[assignments/a-dashboard/ASSIGNMENT.md](assignments/a-dashboard/ASSIGNMENT.md)`                 |
 | **B** | Debug the todo app (symptoms → AI → fix)       | `[assignments/b-todo-app/ASSIGNMENT.md](assignments/b-todo-app/ASSIGNMENT.md)`                   |
-| **C** | MCP (Context7, GitHub, optional)               | `[assignments/c-mcp-power-tools/ASSIGNMENT.md](assignments/c-mcp-power-tools/ASSIGNMENT.md)`     |
+| **C** | MCP (Context7 + custom servers)               | `[assignments/c-mcp-power-tools/ASSIGNMENT.md](assignments/c-mcp-power-tools/ASSIGNMENT.md)`     |
 | **D** | `CLAUDE.md` + `/redesign` skill                | `[assignments/d-ui-redesign-skill/ASSIGNMENT.md](assignments/d-ui-redesign-skill/ASSIGNMENT.md)` |
 
 
@@ -106,6 +114,8 @@ Bring a **small, real task** if you can (one bugfix, one feature slice, one refa
 
 To keep `main` participant-safe, spoilers and reference implementations live on a separate branch:
 
+**What this branch contains:** Working solutions for all assignments, bug hints for Assignment B, and MCP server configs.
+
 ```bash
 git switch workshop-solutions
 ```
@@ -115,3 +125,5 @@ To return to the normal workshop state:
 ```bash
 git switch main
 ```
+
+**Pro tip:** Keep both branches handy. Compare your work against the solutions when you're stuck.

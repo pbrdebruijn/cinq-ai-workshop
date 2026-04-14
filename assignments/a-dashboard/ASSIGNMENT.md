@@ -13,6 +13,8 @@ npm run dev
 
 Study the existing widgets in `src/app/page.tsx` before you start — they're your pattern.
 
+**Workspace preview tip:** When you open the app, you'll see **3 working widgets** (GitHub Stars, Cat Fact, Bitcoin Price) and **3 empty card placeholders**. The existing widgets are finished; you'll replace the placeholders with your implementations. All three new cards live in the same file — no new routes to create.
+
 ---
 
 ## If you want a reference solution
