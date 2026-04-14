@@ -9,21 +9,51 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.0/dist/theme/night.css">
   <!-- Colorful dark theme overrides -->
   <style>
-    /* ── Base dark background with subtle gradient ── */
-    :root {
-      --accent-cyan:   #00e5ff;
-      --accent-purple: #b388ff;
-      --accent-pink:   #ff4081;
-      --accent-amber:  #ffca28;
-      --accent-green:  #69ff47;
-      --accent-teal:   #64ffda;
-      --bg-dark:       #0d0d1a;
-      --bg-card:       rgba(255,255,255,0.04);
+    /* ── Modern colorful dark theme (presentation-first contrast) ── */
+    :root{
+      --bg0: #070A12;
+      --bg1: #0B1022;
+      --bg2: rgba(255,255,255,0.055);
+
+      /* readable, slightly cool foreground (projector-friendly) */
+      --fg: #EAF0FF;
+      --muted: rgba(234,240,255,0.72);
+      --faint: rgba(234,240,255,0.55);
+
+      --border: rgba(234,240,255,0.12);
+      --shadow: 0 18px 44px rgba(0,0,0,0.45);
+
+      /* Accents: keep to 2 primaries + 1 warm highlight */
+      --a: #7C5CFF;   /* violet */
+      --b: #22D3EE;   /* cyan */
+      --c: #FFB020;   /* amber */
+      --ok: #34D399;  /* green */
+      --warn: #F472B6;/* pink */
     }
 
     .reveal-viewport,
-    .reveal {
-      background: linear-gradient(135deg, #0d0d1a 0%, #13102a 50%, #0a1628 100%);
+    .reveal{
+      background:
+        radial-gradient(1200px 700px at 18% 18%, rgba(124,92,255,0.14), transparent 55%),
+        radial-gradient(900px 600px at 82% 34%, rgba(34,211,238,0.12), transparent 52%),
+        linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 55%, #071427 100%);
+      color: var(--fg);
+    }
+
+    .reveal{
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .reveal p,
+    .reveal li{
+      color: var(--fg);
+    }
+
+    .reveal small,
+    .reveal .muted{
+      color: var(--muted);
     }
 
     /* ── Layout: constrain slides, scroll tall content ── */
@@ -42,7 +72,7 @@
       overflow-x: hidden;
       overflow-y: auto;
       overflow-wrap: anywhere;
-      padding: 0.4em 0.75em;
+      padding: 0.4em 0.55em;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -64,136 +94,148 @@
       flex-shrink: 0;
     }
 
-    /* ── Headings: gradient text ── */
-    .reveal h1 {
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    /* ── Headings ── */
+    .reveal h1,
+    .reveal h2{
+      letter-spacing: -0.02em;
+      text-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+
+    .reveal h1{
+      background: linear-gradient(90deg, var(--b), var(--a));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: none;
-      font-weight: 800;
+      font-weight: 850;
     }
 
-    .reveal h2 {
-      background: linear-gradient(90deg, var(--accent-teal), var(--accent-cyan));
+    .reveal h2{
+      background: linear-gradient(90deg, rgba(234,240,255,0.92), rgba(34,211,238,0.95));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: none;
     }
 
-    .reveal h3 {
-      color: var(--accent-purple);
+    .reveal h3{
+      color: rgba(234,240,255,0.92);
     }
 
     /* ── Blockquotes ── */
-    .reveal blockquote {
+    .reveal blockquote{
       max-width: 100%;
       box-sizing: border-box;
-      border-left: 4px solid var(--accent-pink);
-      background: rgba(255, 64, 129, 0.08);
-      color: #f0f0ff;
-      padding: 0.5em 1em;
-      border-radius: 0 8px 8px 0;
+      border-left: 4px solid rgba(124,92,255,0.85);
+      background: rgba(124,92,255,0.10);
+      color: var(--fg);
+      padding: 0.55em 1.05em;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
     }
 
-    /* ── Lists: colored bullets ── */
-    .reveal ul li::marker {
-      color: var(--accent-cyan);
-    }
+    /* ── Lists ── */
+    .reveal ul li::marker{ color: rgba(34,211,238,0.95); }
+    .reveal ol li::marker{ color: rgba(255,176,32,0.95); font-weight: 750; }
 
-    .reveal ol li::marker {
-      color: var(--accent-amber);
-      font-weight: 700;
-    }
-
-    /* ── Strong: amber highlight ── */
-    .reveal strong {
-      color: var(--accent-amber);
-    }
+    /* ── Emphasis ── */
+    .reveal strong{ color: var(--c); }
+    .reveal em{ color: rgba(234,240,255,0.90); }
 
     /* ── Code blocks ── */
-    .reveal pre {
+    .reveal pre{
       width: 100%;
       max-width: 100%;
       margin-left: auto;
       margin-right: auto;
       box-sizing: border-box;
-      border: 1px solid rgba(0, 229, 255, 0.25);
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(34,211,238,0.16);
+      border-radius: 12px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.45);
+      background: rgba(7,10,18,0.65);
+      backdrop-filter: blur(6px);
     }
 
-    .reveal pre code {
+    .reveal pre code{
       white-space: pre-wrap;
       word-break: break-word;
-      background: rgba(0, 0, 30, 0.7);
+      background: transparent;
+      color: rgba(234,240,255,0.92);
     }
 
-    .reveal code:not(pre code) {
-      color: var(--accent-teal);
-      background: rgba(100, 255, 218, 0.08);
-      padding: 0.05em 0.3em;
-      border-radius: 4px;
+    .reveal code:not(pre code){
+      color: rgba(34,211,238,0.95);
+      background: rgba(34,211,238,0.10);
+      border: 1px solid rgba(34,211,238,0.18);
+      padding: 0.06em 0.34em;
+      border-radius: 7px;
     }
 
     /* ── Tables ── */
-    .reveal table {
+    .reveal table{
       width: 100%;
       max-width: 100%;
       border-collapse: collapse;
       font-size: 0.75em;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: rgba(7,10,18,0.40);
+      backdrop-filter: blur(6px);
     }
 
-    .reveal table thead th {
-      background: linear-gradient(90deg, rgba(0,229,255,0.2), rgba(179,136,255,0.2));
-      color: var(--accent-cyan);
-      border-bottom: 2px solid var(--accent-cyan);
-      padding: 0.5em;
+    .reveal table thead th{
+      background: linear-gradient(90deg, rgba(124,92,255,0.20), rgba(34,211,238,0.18));
+      color: rgba(234,240,255,0.92);
+      border-bottom: 1px solid rgba(34,211,238,0.25);
+      padding: 0.55em 0.6em;
     }
 
-    .reveal table tbody tr:nth-child(odd) td {
-      background: rgba(255,255,255,0.03);
-    }
+    .reveal table tbody tr:nth-child(odd) td{ background: rgba(255,255,255,0.025); }
+    .reveal table tbody tr:nth-child(even) td{ background: rgba(255,255,255,0.055); }
 
-    .reveal table tbody tr:nth-child(even) td {
-      background: rgba(255,255,255,0.06);
-    }
-
-    .reveal table td {
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 0.45em 0.6em;
+    .reveal table td{
+      border-top: 1px solid rgba(234,240,255,0.08);
+      padding: 0.50em 0.65em;
+      color: rgba(234,240,255,0.88);
     }
 
     /* ── Links ── */
-    .reveal a {
-      color: var(--accent-cyan);
+    .reveal a{
+      color: rgba(34,211,238,0.95);
+      text-decoration-color: rgba(34,211,238,0.35);
+      text-underline-offset: 0.14em;
     }
 
-    .reveal a:hover {
-      color: var(--accent-teal);
-      text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    .reveal a:hover{
+      color: rgba(124,92,255,0.95);
+      text-decoration-color: rgba(124,92,255,0.45);
+      text-shadow: 0 0 22px rgba(124,92,255,0.22);
     }
 
     /* ── Divider "Part N" slides ── */
     .reveal .slides > section > p:first-child:only-of-type,
-    .reveal .slides > section > p:first-child + h1 + p {
-      color: var(--accent-purple);
+    .reveal .slides > section > p:first-child + h1 + p{
+      color: rgba(124,92,255,0.92);
     }
 
     /* ── Slide number ── */
-    .reveal .slide-number {
-      color: var(--accent-purple);
-      background: rgba(0,0,0,0.5);
+    .reveal .slide-number{
+      color: rgba(234,240,255,0.82);
+      background: rgba(7,10,18,0.55);
+      border: 1px solid rgba(234,240,255,0.10);
+      border-radius: 10px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
     }
 
     /* ── Progress bar ── */
-    .reveal .progress {
-      background: rgba(255,255,255,0.1);
+    .reveal .progress{
+      background: rgba(234,240,255,0.10);
+      height: 6px;
     }
 
-    .reveal .progress span {
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    .reveal .progress span{
+      background: linear-gradient(90deg, var(--b), var(--a));
+      box-shadow: 0 0 22px rgba(34,211,238,0.22);
     }
 
   </style>
@@ -201,6 +243,17 @@
 <body>
   <div class="reveal">
     <div class="slides">
+
+      <!-- ══ First Slide: QR Code & Resources ══ -->
+      <section>
+        <center>
+          <img src="../slides-assets/qr-code.png" alt="github repository" style="max-width: 300px; margin-bottom: 2em;">
+          <p><a href="https://github.com/pbrdebruijn/cinq-ai-workshop" style="color: var(--fg); font-size: 1.1em;">https://github.com/pbrdebruijn/cinq-ai-workshop</a></p>
+        </center>
+        <p style="text-align: center; font-size: 0.7em;">
+          <code>git clone git@github.com:pbrdebruijn/cinq-ai-workshop.git</code>
+        </p>
+      </section>
 
       <!-- ══ Title Slide ══ -->
       <section>
@@ -212,7 +265,7 @@
       <!-- ══ Quote 1 ══ -->
       <section>
         <blockquote>&ldquo;Every company is now a software company.&rdquo;</blockquote>
-        <p>&mdash; which means every developer is now a product differentiator</p>
+        <p>which means every developer is now a product differentiator</p>
       </section>
 
       <!-- ══ Quote 2 ══ -->
@@ -241,9 +294,9 @@
 
       <!-- ══ Divider: Part 1 ══ -->
       <section>
-        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 1</p>
+        <p style="color: rgba(124,92,255,0.92); font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 1</p>
         <h1>Principles &amp;<br>workflow</h1>
-        <p style="color: #64ffda;">Habits that outlive the changelog &mdash; then two tool shapes</p>
+        <p style="color: rgba(34,211,238,0.90);">Habits that outlive the changelog &mdash; then two tool shapes</p>
       </section>
 
       <!-- ══ Durable principles ══ -->
@@ -251,22 +304,22 @@
         <h2>Durable principles</h2>
         <p><small>These apply to autocomplete, chat, and full agents alike</small></p>
         <ul>
-          <li><strong>Context is the product</strong> &mdash; files, errors, constraints beat &ldquo;fix my app&rdquo;</li>
-          <li><strong>Verify, don&rsquo;t trust</strong> &mdash; tests, diffs, reproduction before big merges</li>
-          <li><strong>Bound the work</strong> &mdash; small steps, clear done; fresh session for unrelated tasks</li>
-          <li><strong>Encode once</strong> &mdash; repo rules beat repeating the same lecture in chat</li>
+          <li><strong>Context is the product</strong> <br /> files, errors, constraints beat &ldquo;fix my app&rdquo;</li>
+          <li><strong>Verify, don&rsquo;t trust</strong> <br /> tests, diffs, reproduction before big merges</li>
+          <li><strong>Bound the work</strong> <br /> small steps, clear done; fresh session for unrelated tasks</li>
+          <li><strong>Encode once</strong> <br /> repo rules beat repeating the same lecture in chat</li>
         </ul>
       </section>
 
       <!-- ══ Agentic coding: trust & guardrails ══ -->
       <section>
         <h2>Agentic coding</h2>
-        <p><strong>More delegation</strong> &mdash; plans, multi-file edits, shell commands &mdash; more upside <em>and</em> more risk.</p>
         <ul>
-          <li><strong>Calibrate trust</strong> &mdash; explain-first or narrow scope first; widen as <code>CLAUDE.md</code> / rules mature</li>
-          <li><strong>Guardrails stack</strong> &mdash; project instructions, review before merge, undo/checkpoints, sandbox or allowlists where you have them</li>
-          <li><strong>MCP &amp; integrations</strong> &mdash; only with org approval; same hygiene as any production access</li>
-          <li><strong>You own secrets and prod</strong> &mdash; automation assists; responsibility stays human</li>
+          <li><strong>More delegation</strong> <br /> plans, multi-file edits, shell commands &mdash; more upside <em>and</em> more risk.</li>
+          <li><strong>Calibrate trust</strong> <br /> explain-first or narrow scope first; widen as <code>CLAUDE.md</code> / rules mature</li>
+          <li><strong>Guardrails stack</strong> <br /> project instructions, review before merge, undo/checkpoints, sandbox or allowlists where you have them</li>
+          <li><strong>MCP &amp; integrations</strong> <br /> only with org approval; same hygiene as any production access</li>
+          <li><strong>You own secrets and prod</strong> <br /> automation assists; responsibility stays human</li>
         </ul>
         <p><small>PR review bots, debug-with-evidence, bounded bash &mdash; same theme: <strong>evidence + boundaries</strong>, not autopilot.</small></p>
       </section>
@@ -343,9 +396,9 @@
 
       <!-- ══ Divider: Part 2 ══ -->
       <section>
-        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 2</p>
+        <p style="color: rgba(124,92,255,0.92); font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 2</p>
         <h1>Guided<br>Assignment</h1>
-        <p style="color: #64ffda;">45 minutes &mdash; struggle first</p>
+        <p style="color: rgba(34,211,238,0.90);">45 minutes &mdash; struggle first</p>
         <p><small>Best practices come <em>after</em> &mdash; so the tips are grounded in problems you&rsquo;ve actually hit.</small></p>
       </section>
 
@@ -409,9 +462,9 @@
 
       <!-- ══ Divider: Part 3 ══ -->
       <section>
-        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 3</p>
+        <p style="color: rgba(124,92,255,0.92); font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 3</p>
         <h1>Best Practices</h1>
-        <p style="color: #64ffda;">Tips for effective AI-assisted coding</p>
+        <p style="color: rgba(34,211,238,0.90);">Tips for effective AI-assisted coding</p>
       </section>
 
       <!-- ══ Context Management ══ -->
@@ -440,12 +493,12 @@ no external UI libraries."</code></pre>
       </section>
 
       <!-- ══ Project Configuration ══ -->
-      <section style="flex-direction: row; flex-wrap: wrap; gap: 0.5em; align-items: flex-start; justify-content: flex-start;">
-        <h2 style="width: 100%; flex-shrink: 0;">Project configuration</h2>
-        <p style="width: 100%; margin: 0 0 0.35em; font-size: 0.75em;">Versionable <strong>team guardrails</strong> &mdash; not personal superstitions</p>
+      <section style="flex-direction: row; flex-wrap: wrap; gap: 0.45em; align-items: flex-start; justify-content: flex-start; font-size: 0.9em;">
+        <h2 style="width: 100%; flex-shrink: 0; margin: 0 0 0.15em;">Project configuration</h2>
+        <p style="width: 100%; margin: 0 0 0.25em; font-size: 0.72em;">Versionable <strong>team guardrails</strong> &mdash; not personal superstitions</p>
         <div style="flex: 1; min-width: 0;">
-          <h3 style="margin: 0 0 0.2em;">.cursorrules</h3>
-          <pre style="font-size: 0.52em; margin: 0;"><code>You are working on Next.js 14:
+          <h3 style="margin: 0 0 0.15em;">.cursorrules</h3>
+          <pre style="font-size: 0.46em; line-height: 1.15; margin: 0;"><code>You are working on Next.js 14:
 - App Router (not Pages)
 - TypeScript strict mode
 - Tailwind CSS
@@ -456,8 +509,8 @@ Rules:
 - Prefer Server Actions</code></pre>
         </div>
         <div style="flex: 1; min-width: 0;">
-          <h3 style="margin: 0 0 0.2em;">CLAUDE.md</h3>
-          <pre style="font-size: 0.52em; margin: 0;"><code># Project: Dashboard
+          <h3 style="margin: 0 0 0.15em;">CLAUDE.md</h3>
+          <pre style="font-size: 0.46em; line-height: 1.15; margin: 0;"><code># Project: Dashboard
 
 ## Stack
 - Next.js 14, TypeScript
@@ -484,9 +537,9 @@ Rules:
 
       <!-- ══ Divider: Part 4 ══ -->
       <section>
-        <p style="color: #b388ff; font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 4</p>
+        <p style="color: rgba(124,92,255,0.92); font-size: 0.8em; letter-spacing: 0.2em; text-transform: uppercase;">Part 4</p>
         <h1>Open<br>Assignment</h1>
-        <p style="color: #64ffda;">45 minutes &mdash; your own project</p>
+        <p style="color: rgba(34,211,238,0.90);">45 minutes &mdash; your own project</p>
       </section>
 
       <!-- ══ Open Assignment ══ -->
@@ -526,11 +579,11 @@ Rules:
       </section>
 
       <!-- ══ Thank You ══ -->
-      <section>
-        <h1>One thing to do<br>this week</h1>
-        <p>Add a <code>CLAUDE.md</code> (or <code>.cursorrules</code>) to a project you own.</p>
-        <p>Encode your stack, your conventions, your &ldquo;don&rsquo;ts&rdquo;.<br>Every session after that gets smarter for free.</p>
-        <p><small>Questions? &mdash; Cinq ICT &mdash; AI Developer Tools Workshop</small></p>
+      <section style="padding-bottom: 0.15em;">
+        <h1 style="font-size: 2.25em; margin: 0 0 0.2em;">One thing to do<br>this week</h1>
+        <p style="margin: 0 0 0.35em;">Add a <code>CLAUDE.md</code> (or <code>.cursorrules</code>) to a project you own.</p>
+        <p style="margin: 0;">Encode your stack, your conventions, your &ldquo;don&rsquo;ts&rdquo;.<br>Every session after that gets smarter for free.</p>
+        <p style="margin: 0.25em 0 0;"><small style="font-size: 0.65em;">Questions? &mdash; Cinq ICT &mdash; AI Developer Tools Workshop</small></p>
       </section>
 
     </div>
@@ -545,9 +598,10 @@ Rules:
       transition: 'fade',
       transitionSpeed: 'fast',
       backgroundTransition: 'none',
-      width: 1080,
-      height: 760,
-      margin: 0.14,
+      // Larger design canvas -> smaller rendered text (less overflow)
+      width: 1280,
+      height: 900,
+      margin: 0.08,
       minScale: 0.1,
       maxScale: 2.0,
       plugins: [RevealHighlight]
