@@ -1,0 +1,79 @@
+start.sh
+  83dbaa52519d4108 1-55
+presentation/presentation.html
+  477571b75e48e753 496-498,500-501,512-513,582-586
+  2e8e1043ba23dd68 12-31,35-40,43-56,75,97-101,104-105,109,112-113,119-120,124,127-132,135-137,139-141,144,150-154,157,160-161,164-169,173,178-183,186-190,193-194,196-199,203-206,209-212,217-218,222-227,231-233,236-238,297,299,399,401,465,467,540,542,601-604
+  5952d8863a77f89e 247-249,252,254-257
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "368ddd0bc6c442ff2eaab4f66014c2afcaf19cac",
+  "prompts": {
+    "2e8e1043ba23dd68": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "5cc619c7-4fd0-414f-86b5-60894f0526d9",
+        "model": "default"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 138,
+      "total_deletions": 95,
+      "accepted_lines": 137,
+      "overriden_lines": 1
+    },
+    "477571b75e48e753": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "61c7e6e5-23be-4740-91e8-09857149f88d",
+        "model": "default"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 14,
+      "total_deletions": 14,
+      "accepted_lines": 12,
+      "overriden_lines": 1
+    },
+    "5952d8863a77f89e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_273decd15ffeWie7a8Nt2tw3ty",
+        "model": "ollama/glm-4.7-flash"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 11,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 1
+    },
+    "801d1cbffcb90125": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "19e4a481-a98d-440e-962a-5a9d0333f03f",
+        "model": "default"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 63,
+      "total_deletions": 17,
+      "accepted_lines": 2,
+      "overriden_lines": 9
+    },
+    "83dbaa52519d4108": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cbd46d04-510f-4e81-b8d9-af46e44b6c68",
+        "model": "default"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 57,
+      "total_deletions": 2,
+      "accepted_lines": 55,
+      "overriden_lines": 0
+    }
+  }
+}
