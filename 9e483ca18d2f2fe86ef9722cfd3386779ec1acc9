@@ -1,0 +1,29 @@
+assignments/c-mcp-power-tools/ASSIGNMENT.md
+  5952d8863a77f89e 39,49,54
+README.md
+  5952d8863a77f89e 20-21,40-41,49-50,86-87,93,117-118,127-129
+assignments/a-dashboard/ASSIGNMENT.md
+  5952d8863a77f89e 16-17
+assignments/b-todo-app/ASSIGNMENT.md
+  5952d8863a77f89e 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "9e483ca18d2f2fe86ef9722cfd3386779ec1acc9",
+  "prompts": {
+    "5952d8863a77f89e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_273decd15ffeWie7a8Nt2tw3ty",
+        "model": "ollama/glm-4.7-flash"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 22,
+      "total_deletions": 15,
+      "accepted_lines": 21,
+      "overriden_lines": 1
+    }
+  }
+}
