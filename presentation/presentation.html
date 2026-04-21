@@ -169,6 +169,21 @@
       border-radius: 7px;
     }
 
+    /* Improve vertical rhythm for inline code "pills" */
+    .reveal small{
+      line-height: 1.35;
+    }
+
+    .reveal li small{
+      display: block;
+      margin-top: 0.35em;
+    }
+
+    .reveal small code:not(pre code){
+      display: inline-block;
+      margin: 0.12em 0;
+    }
+
     /* ── Tables ── */
     .reveal table{
       width: 100%;
@@ -402,62 +417,30 @@
         <p><small>Best practices come <em>after</em> &mdash; so the tips are grounded in problems you&rsquo;ve actually hit.</small></p>
       </section>
 
-      <!-- ══ Assignment Options ══ -->
+      <!-- ══ Assignment Overview (single slide) ══ -->
       <section>
-        <h2>Assignment Options</h2>
-        <ul>
-          <li><strong>A: Extend the Dashboard</strong> &mdash; Existing app &bull; Add live API widgets to a partial dashboard</li>
-          <li><strong>B: Debug the Todo App</strong> &mdash; Existing app &bull; Find &amp; fix 3 intentional bugs</li>
-          <li><strong>C: MCP Power Tools</strong> &mdash; Claude Code &bull; Configure &amp; use MCP servers</li>
-          <li><strong>D: UI Redesign via Skill</strong> &mdash; Claude Code &bull; Write &amp; iterate a /redesign slash command</li>
+        <h2>Assignment options</h2>
+        <p><small>Pick one option. The full instructions live in the repo so you don&rsquo;t have to copy from slides.</small></p>
+        <ul style="font-size: 0.95em; line-height: 1.5;">
+          <li>
+            <strong>A: Extend the Dashboard</strong> &mdash; add 3 API widgets<br>
+            <small>Run: <code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code> &middot; <br>
+              Details: <code>assignments/a-dashboard/ASSIGNMENT.md</code></small>
+          </li>
+          <li>
+            <strong>B: Debug the Todo App</strong> &mdash; find &amp; fix 3 intentional bugs<br>
+            <small>Run: <code>cd assignment-b-todo-app &amp;&amp; npm run dev</code> &middot; <br>
+              Details: <code>assignments/b-todo-app/ASSIGNMENT.md</code></small>
+          </li>
+          <li>
+            <strong>C: MCP Power Tools</strong> &mdash; configure and use MCP servers<br>
+            <small>Details: <code>assignments/c-mcp-power-tools/ASSIGNMENT.md</code></small>
+          </li>
+          <li>
+            <strong>D: UI Redesign via Skill</strong> &mdash; write &amp; iterate a <code>/redesign</code> command<br>
+            <small>Details: <code>assignments/d-ui-redesign-skill/ASSIGNMENT.md</code></small>
+          </li>
         </ul>
-      </section>
-
-      <!-- ══ Assignment A ══ -->
-      <section>
-        <h2>Option A &mdash; Extend the Dashboard</h2>
-        <pre><code>cd assignment-a-dashboard-app &amp;&amp; npm run dev</code></pre>
-        <p>3 widgets built, 3 empty slots waiting. Implement them with public APIs &mdash; no keys needed.</p>
-        <ul>
-          <li><strong>Weather</strong> &mdash; Open-Meteo API</li>
-          <li><strong>Crypto Markets</strong> &mdash; CoinGecko (BTC, ETH, SOL)</li>
-          <li><strong>News Headlines</strong> &mdash; Hacker News Algolia API</li>
-        </ul>
-        <p><small>Full details: <code>assignments/a-dashboard/ASSIGNMENT.md</code></small></p>
-      </section>
-
-      <!-- ══ Assignment B ══ -->
-      <section>
-        <h2>Option B &mdash; Debug the Todo App</h2>
-        <pre><code>cd assignment-b-todo-app &amp;&amp; npm run dev</code></pre>
-        <p>The app has <strong>3 intentional bugs</strong> in <code>src/app/page.tsx</code>. Use the app first, note what breaks, then bring the symptoms to Claude.</p>
-        <ul>
-          <li>Describe symptoms &rarr; let AI locate root causes &rarr; fix one at a time</li>
-        </ul>
-        <p><small>Full details: <code>assignments/b-todo-app/ASSIGNMENT.md</code></small></p>
-      </section>
-
-      <!-- ══ Assignment C ══ -->
-      <section>
-        <h2>Option C &mdash; MCP Power Tools</h2>
-        <pre><code>claude mcp add context7 npx -- -y @upstash/context7-mcp</code></pre>
-        <p>Wire up 2&ndash;3 MCP servers and see how live context changes Claude&rsquo;s answers.</p>
-        <ul>
-          <li><strong>context7</strong> &mdash; live Next.js &amp; Tailwind docs</li>
-          <li><strong>GitHub MCP</strong> &mdash; browse issues, summarise repos</li>
-        </ul>
-        <p><small>Full details: <code>assignments/c-mcp-power-tools/ASSIGNMENT.md</code></small></p>
-      </section>
-
-      <!-- ══ Assignment D ══ -->
-      <section>
-        <h2>Option D &mdash; UI Redesign with a Skill</h2>
-        <pre><code>.claude/commands/redesign.md</code></pre>
-        <p>Write a <strong>/redesign</strong> slash command, run it on the todo app, then iterate the prompt and compare results.</p>
-        <ul>
-          <li>Also write a <code>CLAUDE.md</code> with your design tokens</li>
-        </ul>
-        <p><small>Full details: <code>assignments/d-ui-redesign-skill/ASSIGNMENT.md</code></small></p>
       </section>
 
       <!-- ══ Divider: Part 3 ══ -->
