@@ -1,0 +1,23 @@
+presentation/presentation.html
+  801d1cbffcb90125 172-186,420,422-423,425-426,428-431,433-442
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "c479490209c77cfa28ee9961493342b3f3d07014",
+  "prompts": {
+    "801d1cbffcb90125": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "19e4a481-a98d-440e-962a-5a9d0333f03f",
+        "model": "default"
+      },
+      "human_author": "Paul de Bruijn",
+      "messages": [],
+      "total_additions": 36,
+      "total_deletions": 55,
+      "accepted_lines": 35,
+      "overriden_lines": 3
+    }
+  }
+}
